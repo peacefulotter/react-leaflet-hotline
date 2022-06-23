@@ -6,6 +6,7 @@
   "module": "lib/esm/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "test": "echo 'Error, not yet implemented'",
     "clean": "rm -rf ./lib",
     "prebuild": "npm run clean",
     "build-cjs": "tsc --project ./tsconfig.cjs.json",
@@ -53,7 +54,8 @@
   "dependencies": {
     "leaflet": "^1.8.0",
     "react": "^18.2.0",
-    "react-leaflet": "^4.0.0"
+    "react-leaflet": "^4.0.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
@@ -67,6 +69,7 @@
     "react-styleguidist": "^11.2.0",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.1",
+    "tslint": "^6.1.3",
     "typescript": "^4.7.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.73.0"

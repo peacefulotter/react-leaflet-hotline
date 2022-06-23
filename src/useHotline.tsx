@@ -22,11 +22,11 @@ const useHotline = ( data: LatLngValue[], options?: HotlineOptions ) => {
     }, [options])
     
     useEffect( () => {
-        const renderer = new LatLngRenderer(options)
-        const polyline = new HotPolyline<LatLngExpression, LatLngData>( renderer, data )
+        const _renderer = new LatLngRenderer(options)
+        const polyline = new HotPolyline<LatLngExpression, LatLngData>( _renderer, data )
 
         polyline.addTo(map)
-        setRenderer(renderer)
+        setRenderer(_renderer)
 
         return () => { 
             polyline.remove()

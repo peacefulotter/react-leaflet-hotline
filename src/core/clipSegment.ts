@@ -8,11 +8,14 @@ const clipSegment = (hotline: Renderer<any>, a: any, b: any, bounds: any, useLas
     
     let codeA = useLastCode ? hotline._lastCode : (L.LineUtil as any)._getBitCode(a, bounds);
     let codeB = (L.LineUtil as any)._getBitCode(b, bounds);
-    let codeOut: any, p: any, newCode: any;
+    let codeOut: any;
+    let p: any;
+    let newCode: any;
 
     // save 2nd code to avoid calculating it on the next segment
     hotline._lastCode = codeB;
 
+    /* tslint:disable:no-bitwise */
     while (true) {
         // if a,b is inside the clip window (trivial accept)
         if ( !(codeA | codeB) ) {
@@ -39,6 +42,7 @@ const clipSegment = (hotline: Renderer<any>, a: any, b: any, bounds: any, useLas
             }
         }
     }
+    /* tslint:enable:no-bitwise */
 }
 
 export default clipSegment;

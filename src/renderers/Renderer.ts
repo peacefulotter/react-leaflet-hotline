@@ -74,9 +74,9 @@ abstract class Renderer<DataT> extends L.Renderer {
      * e.g. { 0.0: 'white', 1.0: 'black' }
      */
     palette(palette: Palette) {
-        const canvas = document.createElement('canvas'),
-                 ctx = canvas.getContext('2d') as CanvasRenderingContext2D,
-            gradient = ctx.createLinearGradient(0, 0, 0, 256);
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
+        const gradient = ctx.createLinearGradient(0, 0, 0, 256);
 
         canvas.width = 1;
         canvas.height = 256;
@@ -159,12 +159,12 @@ abstract class Renderer<DataT> extends L.Renderer {
 
         for (let i = 0, dataLength = this._data.length; i < dataLength; i++) 
         {
-            let path = this._data[i] as any; // ==== fixme
+            const path = this._data[i] as any; // ==== fixme
 
             for (let j = 1, pathLength = path.length; j < pathLength; j++) 
             {
-                let pointStart = path[j - 1] as any;
-                let pointEnd = path[j] as any;
+                const pointStart = path[j - 1] as any;
+                const pointEnd = path[j] as any;
                 
                 const ctx = this._ctx;
                 ctx.lineWidth = outlineWidth;
@@ -182,7 +182,7 @@ abstract class Renderer<DataT> extends L.Renderer {
         gradient.addColorStop(dist, `rgb(${rgb.join(',')})`);
     }
 
-    onProjected() {};
+    onProjected() { return 0 };
 
     abstract projectLatLngs(_map: Map, latlngs: any[], result: any, projectedBounds: any): void;
 
