@@ -1,0 +1,53 @@
+{
+  "name": "react-leaflet-hotline",
+  "version": "0.0.1",
+  "description": "Ported Leaflet.Hotline to React and Typescript. Create leaflet Polylines with colored gradients",
+  "main": "lib/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf ./lib",
+    "prebuild": "npm run clean",
+    "build-cjs": "tsc --project ./tsconfig.cjs.json",
+    "build-esm": "tsc --project ./tsconfig.esm.json",
+    "build-types": "tsc --project ./tsconfig.types.json",
+    "build": "npm run build-cjs && npm run build-esm && npm run build-types && echo '\\033[1;32m Successfully built \\033[0m'",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "lint": "tslint -p tsconfig.json",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "build-docs": "npx del-cli dist-docs && npx styleguidist build",
+    "serve-docs": "npx styleguidist server"
+  },
+  "browserslist": [
+    ">1%",
+    "last 1 version",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeacefulOtter/react-leaflet-hotline.git"
+  },
+  "keywords": [
+    "leaflet",
+    "gradient",
+    "react",
+    "colors",
+    "color",
+    "hotline",
+    "map"
+  ],
+  "files": [
+    "lib/**/*"
+  ],
+  "author": {
+    "name": "PeacefulOtter",
+    "email": "nathan.maire@epfl.ch",
+    "url": "https://natmai.netlify.app"
+  },
+  "license": "MIT"
+}
