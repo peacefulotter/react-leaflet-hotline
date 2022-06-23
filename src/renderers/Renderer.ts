@@ -29,7 +29,7 @@ abstract class Renderer<DataT> extends L.Renderer {
         super()
         this._data = [];
         this.projectedData = []
-        this._palette = new Uint8ClampedArray()
+        this._palette = new Uint8ClampedArray(256 * 4)
         this.setOptions(options);
     }
 
@@ -183,7 +183,7 @@ abstract class Renderer<DataT> extends L.Renderer {
     }
 
 
-    abstract projectLatLngs(_map: Map, latlngs: any[], result: any, projectedBounds: any)
+    abstract projectLatLngs(_map: Map, latlngs: any[], result: any, projectedBounds: any): void;
 
     /**
      * Draws the color encoded hotline of the graphs.
