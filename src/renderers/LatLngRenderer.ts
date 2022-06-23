@@ -67,9 +67,9 @@ export default class LatLngRenderer extends Renderer<LatLngData> {
             const rgb = this.getRGBForValue(point.z);
             this._addColorGradient(gradient, rgb, dist)
         }
-    }
+    } 
 
-    onProjected(): void {
+    override onProjected(): void {
         
     }
 }

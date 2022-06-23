@@ -5,11 +5,11 @@ import { Color, HotlineOptions, Palette, RGB } from "../hotline";
 
 
 /**
-	 * Core renderer.
-	 * @constructor
-	 * @param {HTMLElement | string} canvas - &lt;canvas> element or its id
-	 * to initialize the instance on.
-	 */
+ * Core renderer.
+ * @constructor
+ * @param {HTMLElement | string} canvas - &lt;canvas> element or its id
+ * to initialize the instance on.
+ */
 abstract class Renderer<DataT> extends L.Renderer {
 
     _canvas: HTMLCanvasElement | undefined;
@@ -182,6 +182,7 @@ abstract class Renderer<DataT> extends L.Renderer {
         gradient.addColorStop(dist, `rgb(${rgb.join(',')})`);
     }
 
+    onProjected() {};
 
     abstract projectLatLngs(_map: Map, latlngs: any[], result: any, projectedBounds: any): void;
 
@@ -190,8 +191,6 @@ abstract class Renderer<DataT> extends L.Renderer {
      * @private
      */
     abstract _drawHotline(): void;
-
-    abstract onProjected(): void;
 }
 
 export default Renderer;

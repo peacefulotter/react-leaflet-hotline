@@ -13,7 +13,7 @@ export const defaultOptions: Required<HotlineOptions> = {
     max: 1,
     outlineWidth: 1,
     outlineColor: 'black',
-    weight: 5,
+    weight: 7,
     palette: defaultPalette,
     onclick: () => {}
 }

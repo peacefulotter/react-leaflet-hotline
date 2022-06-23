@@ -35,14 +35,10 @@ export class HotlineCanvas<DataT> extends L.Canvas
     {
         const parts = layer._parts;
 
-        if ( !(this as any)._drawing || !parts.length ) { return; }
-
-        this._updateOptions(layer);
+        if ( !parts.length ) { return; }
 
         this._hotline
             .data(parts)
             .draw();
     }
-
-    _updateOptions(layer: any) {}
 }
