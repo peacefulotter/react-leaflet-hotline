@@ -25,7 +25,7 @@ abstract class Renderer<T> extends L.Renderer {
     _lastCode: any;
     projectedData: T[]
 
-    constructor(options?: HotlineOptions, params?: any)
+    constructor(options?: HotlineOptions, ...params: any[])
     {
         super()
         this._data = [];
