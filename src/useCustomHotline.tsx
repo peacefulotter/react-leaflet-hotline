@@ -4,16 +4,12 @@ import { useEffect, useState } from 'react'
 import { useMapEvents } from 'react-leaflet'
 import L from 'leaflet'
 
-import { HotlineOptions } from './types';
-import HotPolyline from './core/HotPolyline';
+import { HotlineOptions, NewableHotPolyline, NewableRenderer } from './types';
 import Renderer from './renderers/Renderer';
 
 function useCustomHotline<T, U>( 
-    RendererClass: new (options?: HotlineOptions) => Renderer<U>, 
-    HotPolylineClass: new (
-        renderer: Renderer<U>, data: T[],
-        getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number
-    ) => HotPolyline<T, U>, 
+    RendererClass: NewableRenderer<U>, 
+    HotPolylineClass: NewableHotPolyline<T, U>, 
 )
 {
     return ( 

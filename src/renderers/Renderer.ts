@@ -1,5 +1,6 @@
 
 import L, { Map } from 'leaflet'
+
 import { defaultOptions, defaultPalette } from '../constants';
 import { Color, HotlineOptions, Palette, RGB } from "../types";
 
@@ -10,7 +11,7 @@ import { Color, HotlineOptions, Palette, RGB } from "../types";
  * @param {HTMLElement | string} canvas - &lt;canvas> element or its id
  * to initialize the instance on.
  */
-abstract class Renderer<DataT> extends L.Renderer {
+abstract class Renderer<T> extends L.Renderer {
 
     _canvas: HTMLCanvasElement | undefined;
     _ctx: CanvasRenderingContext2D | undefined;
@@ -18,11 +19,11 @@ abstract class Renderer<DataT> extends L.Renderer {
     _height: number | undefined;
 
     _options: Required<HotlineOptions>
-    _data: DataT[];
+    _data: T[];
     _palette: Uint8ClampedArray;
 
     _lastCode: any;
-    projectedData: DataT[]
+    projectedData: T[]
 
     constructor(options?: HotlineOptions)
     {
@@ -96,18 +97,18 @@ abstract class Renderer<DataT> extends L.Renderer {
 
     /**
      * Sets the data that gets drawn on the canvas.
-     * @param {(Path|Path[])} data - A single path or an array of paths.
+     * @param {(T|T[])} data - A single path or an array of paths.
      */
-    data(data: DataT[]) {
+    data(data: T[]) {
         this._data = data;
         return this;
     }
 
     /**
      * Adds a path to the list of paths.
-     * @param {Path} path
+     * @param {T} path
      */
-    add(path: DataT) {
+    add(path: T) {
         this._data.push(path);
         return this;
     }
@@ -177,7 +178,7 @@ abstract class Renderer<DataT> extends L.Renderer {
         }
     }
 
-    _addColorGradient(gradient: any, rgb: RGB, dist: number) 
+    _addColorGradient(gradient: CanvasGradient, rgb: RGB, dist: number) 
     {
         gradient.addColorStop(dist, `rgb(${rgb.join(',')})`);
     }

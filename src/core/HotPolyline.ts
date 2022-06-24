@@ -1,4 +1,4 @@
-import L, { LatLng, LatLngExpression, Map } from 'leaflet';
+import L, { LatLng, Map } from 'leaflet';
 
 import { HotlineCanvas } from '../canvas/HotlineCanvas';
 import Renderer from '../renderers/Renderer';

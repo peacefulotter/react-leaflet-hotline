@@ -1,7 +1,6 @@
 
-
-
 import { LatLng, Map } from 'leaflet';
+
 import { HotData, HotPoint } from '../types';
 import Renderer from './Renderer';
 

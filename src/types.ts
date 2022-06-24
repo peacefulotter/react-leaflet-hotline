@@ -1,5 +1,5 @@
 
-import { LatLng } from "leaflet";
+import HotPolyline from "./core/HotPolyline";
 import Renderer from "./renderers/Renderer";
 
 
@@ -17,7 +17,10 @@ export interface HotlineOptions {
 	onclick?: (e: any) => void;
 }
 
-export type HotlineClass<DataT> = new (options?: HotlineOptions) => Renderer<DataT>; 
+export type NewableRenderer<T> = new (options?: HotlineOptions) => Renderer<T>; 
+export type NewableHotPolyline<T, U> = new (
+	renderer: Renderer<U>, data: T[], getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number
+) => HotPolyline<T, U>
 
 // LatLngHotline
 // export interface LatLngValue extends LatLng { value: number }
