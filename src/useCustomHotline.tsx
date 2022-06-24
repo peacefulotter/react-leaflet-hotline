@@ -9,8 +9,8 @@ import HotPolyline from './core/HotPolyline';
 import Renderer from './renderers/Renderer';
 
 function useCustomHotline<T, U>( 
-    Renderer: new (options?: HotlineOptions) => Renderer<U>, 
-    HotPolyline: new (
+    RendererClass: new (options?: HotlineOptions) => Renderer<U>, 
+    HotPolylineClass: new (
         renderer: Renderer<U>, data: T[],
         getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number
     ) => HotPolyline<T, U>, 
@@ -33,8 +33,8 @@ function useCustomHotline<T, U>(
         }, [options])
         
         useEffect( () => {
-            const _renderer = new Renderer(options)
-            const polyline = new HotPolyline( _renderer, data, getLat, getLng, getVal )
+            const _renderer = new RendererClass(options)
+            const polyline = new HotPolylineClass( _renderer, data, getLat, getLng, getVal )
 
             polyline.addTo(map)
             setRenderer(_renderer)
