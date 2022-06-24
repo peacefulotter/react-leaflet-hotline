@@ -17,7 +17,7 @@ export interface HotlineOptions {
 	onclick?: (e: any) => void;
 }
 
-export type NewableRenderer<T> = new ( options?: HotlineOptions, params?: any ) => Renderer<T>; 
+export type NewableRenderer<T> = new ( options?: HotlineOptions, ...params: any[] ) => Renderer<T>; 
 export type NewableHotPolyline<T, U> = new (
 	renderer: Renderer<U>, data: T[] | T[][], getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number
 ) => HotPolyline<T, U>

@@ -16,7 +16,7 @@ function useCustomHotline<T, U>(
     return ( 
         data: T[] | T[][],
         getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number,
-        options?: HotlineOptions, params?: any     
+        options?: HotlineOptions, ...params: any[]     
     )
     : [Renderer<U>, HotPolyline<T, U>] => 
     {
