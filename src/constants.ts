@@ -9,7 +9,7 @@ export const defaultPalette: Palette = [
 export const defaultOptions: Required<HotlineOptions> = {
     min: 0,
     max: 1,
-    outlineWidth: 1,
+    outlineWidth: 0,
     outlineColor: 'black',
     weight: 7,
     palette: defaultPalette,

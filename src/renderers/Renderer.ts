@@ -83,7 +83,7 @@ abstract class Renderer<T> extends L.Renderer {
         canvas.height = 256;
 
         palette.forEach( (c: Color) => {
-            gradient.addColorStop(c.t, `rgb(${c.r}, ${c.g}, ${c.b})`);
+            this._addColorGradient(gradient, [c.r, c.g, c.b], c.t) 
         })
 
         ctx.fillStyle = gradient;
@@ -180,7 +180,8 @@ abstract class Renderer<T> extends L.Renderer {
 
     _addColorGradient(gradient: CanvasGradient, rgb: RGB, dist: number) 
     {
-        gradient.addColorStop(dist, `rgb(${rgb.join(',')})`);
+        const offset = Math.max(0, Math.min(1, dist))
+        gradient.addColorStop(offset, `rgb(${rgb.join(',')})`);
     }
 
     onProjected() { return 0 };

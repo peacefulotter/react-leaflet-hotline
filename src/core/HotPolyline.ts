@@ -2,6 +2,7 @@ import L, { LatLng, Map } from 'leaflet';
 
 import { HotlineCanvas } from '../canvas/HotlineCanvas';
 import Renderer from '../renderers/Renderer';
+import { HotlineOptions } from '../types';
 import clipSegment from './clipSegment';
 
 
@@ -30,6 +31,18 @@ export default class HotPolyline<T, U> extends L.Polyline
 
         this.projectMap = renderer.projectLatLngs;
         this._canvas = canvas;
+    }
+
+    setOptions(options?: HotlineOptions)
+    {
+        this._canvas._hotline.setOptions(options)
+        this._canvas._update()
+        this.redraw()
+    }
+
+    destroy()
+    {
+        this._canvas._destroyContainer()
     }
 
     _projectLatlngs(latlngs: LatLng[] | LatLng[][], result: any, projectedBounds: any) 

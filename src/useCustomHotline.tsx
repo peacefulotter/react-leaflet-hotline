@@ -29,8 +29,8 @@ function useCustomHotline<T, U>(
         const [polyline, setPolyline] = useState<HotPolyline<T, U>>()
 
         useEffect( () => {
-            if ( renderer === undefined ) return;
-            renderer.setOptions(options)
+            if ( polyline === undefined ) return;
+            polyline.setOptions(options)
         }, [options])
         
         useEffect( () => {
@@ -46,7 +46,7 @@ function useCustomHotline<T, U>(
                 _polyline.remove()
                 map.removeLayer(_polyline);
             }
-        }, [data])
+        }, [])
         
         
         return [renderer, polyline]
