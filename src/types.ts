@@ -19,7 +19,7 @@ export interface HotlineOptions {
 
 export type NewableRenderer<T> = new (options?: HotlineOptions) => Renderer<T>; 
 export type NewableHotPolyline<T, U> = new (
-	renderer: Renderer<U>, data: T[], getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number
+	renderer: Renderer<U>, data: T[] | T[][], getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number
 ) => HotPolyline<T, U>
 
 // LatLngHotline

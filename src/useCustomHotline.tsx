@@ -13,7 +13,7 @@ function useCustomHotline<T, U>(
 )
 {
     return ( 
-        data: T[],
+        data: T[] | T[][],
         getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number,
         options?: HotlineOptions     
     ) => {
