@@ -13,9 +13,9 @@ function useHotline<T>(
 {
     const createHotline = useCustomHotline<T, HotData>( LatLngRenderer, HotPolyline<T, HotData> )
 
-    const renderer = createHotline( data, getLat, getLng, getVal, options )
+    const hotline = createHotline( data, getLat, getLng, getVal, options )
 
-    return renderer;
+    return hotline;
 }
 
 export default useHotline;

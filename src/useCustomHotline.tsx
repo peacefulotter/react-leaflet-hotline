@@ -6,6 +6,7 @@ import L from 'leaflet'
 
 import { HotlineOptions, NewableHotPolyline, NewableRenderer } from './types';
 import Renderer from './renderers/Renderer';
+import HotPolyline from './core/HotPolyline';
 
 function useCustomHotline<T, U>( 
     RendererClass: NewableRenderer<U>, 
@@ -16,12 +17,16 @@ function useCustomHotline<T, U>(
         data: T[] | T[][],
         getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number,
         options?: HotlineOptions     
-    ) => {
+    )
+    : [Renderer<U>, HotPolyline<T, U>] => 
+    {
         if ( !L.Browser.canvas ) 
             throw new Error('no Browser canvas')
 
         const map = useMapEvents({})
+
         const [renderer, setRenderer] = useState<Renderer<U>>()
+        const [polyline, setPolyline] = useState<HotPolyline<T, U>>()
 
         useEffect( () => {
             if ( renderer === undefined ) return;
@@ -30,19 +35,21 @@ function useCustomHotline<T, U>(
         
         useEffect( () => {
             const _renderer = new RendererClass(options)
-            const polyline = new HotPolylineClass( _renderer, data, getLat, getLng, getVal )
+            const _polyline = new HotPolylineClass( _renderer, data, getLat, getLng, getVal )
 
-            polyline.addTo(map)
+            _polyline.addTo(map)
+
             setRenderer(_renderer)
+            setPolyline(_polyline)
 
             return () => { 
-                polyline.remove()
-                map.removeLayer(polyline);
+                _polyline.remove()
+                map.removeLayer(_polyline);
             }
         }, [data])
         
         
-        return renderer
+        return [renderer, polyline]
     }
 }
 
