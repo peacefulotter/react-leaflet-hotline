@@ -1,4 +1,4 @@
-import { HotlineOptions, Palette } from "./hotline";
+import { HotlineOptions, Palette } from "./types";
 
 export const defaultPalette: Palette = [
     { r: 0,   g: 160, b: 0,  t: 0    },

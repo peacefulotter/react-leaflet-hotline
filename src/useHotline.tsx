@@ -1,42 +1,21 @@
 
 
-import { useEffect, useState } from 'react'
-import { useMapEvents } from 'react-leaflet'
-import L, { LatLngExpression } from 'leaflet'
-
-import { HotlineOptions, LatLngData, LatLngValue } from './hotline';
+import { HotlineOptions, HotData } from './types';
 import LatLngRenderer from './renderers/LatLngRenderer';
-import { HotPolyline } from './core/HotPolyline';
+import HotPolyline from './core/HotPolyline';
+import useCustomHotline from './useCustomHotline';
 
-const useHotline = ( data: LatLngValue[], options?: HotlineOptions ) => {
-    
-    if ( !L.Browser.canvas ) 
-        throw new Error('no Browser canvas')
+function useHotline<T>( 
+    data: T[], 
+    getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number, 
+    options?: HotlineOptions 
+)
+{
+    const createHotline = useCustomHotline<T, HotData>( LatLngRenderer, HotPolyline<T, HotData> )
 
-    const map = useMapEvents({})
-    const [renderer, setRenderer] = useState<LatLngRenderer>()
+    const renderer = createHotline( data, getLat, getLng, getVal, options )
 
-    useEffect( () => {
-        if ( renderer === undefined ) return;
-        renderer.setOptions(options)
-    }, [options])
-    
-    useEffect( () => {
-        const _renderer = new LatLngRenderer(options)
-        const polyline = new HotPolyline<LatLngExpression, LatLngData>( _renderer, data )
-
-        polyline.addTo(map)
-        setRenderer(_renderer)
-
-        return () => { 
-            polyline.remove()
-            map.removeLayer(polyline);
-        }
-    }, [data])
-     
-    
-    return renderer
-    
+    return renderer;
 }
 
 export default useHotline;

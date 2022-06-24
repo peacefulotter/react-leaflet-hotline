@@ -1,21 +1,21 @@
 
 
 
-import { Map } from 'leaflet';
-import { LatLngData, LatLngPoint } from '../hotline';
+import { LatLng, Map } from 'leaflet';
+import { HotData, HotPoint } from '../types';
 import Renderer from './Renderer';
 
 
-export default class LatLngRenderer extends Renderer<LatLngData> {
+export default class LatLngRenderer extends Renderer<HotData> {
 
-    projectLatLngs(_map: Map, latlngs: any[], result: any, projectedBounds: any)
+    projectLatLngs(_map: Map, latlngs: LatLng[], result: any, projectedBounds: any)
     {
         const len = latlngs.length;
         const ring: any[] = [];
         for (let i = 0; i < len; i++) 
         {
             ring[i] = _map.latLngToLayerPoint(latlngs[i]);
-            ring[i].z = latlngs[i].value;
+            ring[i].z = latlngs[i].alt;
             ring[i].i = i
             projectedBounds.extend(ring[i]);
         }
@@ -38,7 +38,7 @@ export default class LatLngRenderer extends Renderer<LatLngData> {
         }
     }
 
-    _addGradient(pointStart: LatLngPoint, pointEnd: LatLngPoint) 
+    _addGradient(pointStart: HotPoint, pointEnd: HotPoint) 
     {
         const ctx = this._ctx;
 
@@ -56,7 +56,7 @@ export default class LatLngRenderer extends Renderer<LatLngData> {
         ctx.stroke();
     }
 
-    computeGradient(gradient: CanvasGradient, pointStart: LatLngPoint, pointEnd: LatLngPoint) 
+    computeGradient(gradient: CanvasGradient, pointStart: HotPoint, pointEnd: HotPoint) 
     {
         const deltaIndex = pointEnd.i - pointStart.i
 

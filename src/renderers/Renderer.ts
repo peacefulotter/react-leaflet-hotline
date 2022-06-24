@@ -1,7 +1,7 @@
 
 import L, { Map } from 'leaflet'
 import { defaultOptions, defaultPalette } from '../constants';
-import { Color, HotlineOptions, Palette, RGB } from "../hotline";
+import { Color, HotlineOptions, Palette, RGB } from "../types";
 
 
 /**

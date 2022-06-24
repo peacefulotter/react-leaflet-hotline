@@ -1,36 +1,45 @@
-import L, { Map } from 'leaflet';
+import L, { LatLng, LatLngExpression, Map } from 'leaflet';
 
 import { HotlineCanvas } from '../canvas/HotlineCanvas';
 import Renderer from '../renderers/Renderer';
 import clipSegment from './clipSegment';
 
 
-export class HotPolyline<CoordT extends L.LatLngExpression, DataT> extends L.Polyline 
+export default class HotPolyline<T, U> extends L.Polyline 
 {
-    coords: CoordT[] | CoordT[][]
-    projectMap: (_map: Map, latlngs: CoordT[], result: any, projectedBounds: any) => void
-    _canvas: HotlineCanvas<DataT>
+    projectMap: (_map: Map, latlngs: LatLng[], result: any, projectedBounds: any) => void
+    _canvas: HotlineCanvas<U>
 
     constructor(
-        renderer: Renderer<DataT>,
-        coords: CoordT[] | CoordT[][], 
+        renderer: Renderer<U>,
+        coords: T[] | T[][], 
+        getLat: (t: T) => number,
+        getLng: (t: T) => number,
+        getVal: (t: T) => number,
     ) {
-        const canvas = new HotlineCanvas<DataT>(renderer)
-        super( coords, { renderer: canvas, interactive: true } )
+        const canvas = new HotlineCanvas<U>(renderer)
+        
+        const getLatLngExpr = (t: T) => new LatLng( getLat(t), getLng(t), getVal(t) )
+        const latlngs = coords.map( (cs: T | T[]) => 
+            Array.isArray(cs) 
+                ? cs.map( getLatLngExpr )
+                : getLatLngExpr(cs)
+        )
 
-        this.coords = coords;
+        super( latlngs as LatLng[] | LatLng[][], { renderer: canvas, interactive: true } )
+
         this.projectMap = renderer.projectLatLngs;
         this._canvas = canvas;
     }
 
-    _projectLatlngs(latlngs: CoordT[] | CoordT[][], result: any, projectedBounds: any) 
+    _projectLatlngs(latlngs: LatLng[] | LatLng[][], result: any, projectedBounds: any) 
     {
-        if ( Array.isArray(this.coords[0]) ) 
-            this.coords.forEach( (coords: CoordT | CoordT[]) => 
-                this.projectMap(this._map, coords as CoordT[], result, projectedBounds) 
+        if ( Array.isArray(latlngs[0]) ) 
+            latlngs.forEach( (_latlngs: LatLng | LatLng[]) => 
+                this.projectMap(this._map, _latlngs as LatLng[], result, projectedBounds) 
             )
         else
-            this.projectMap(this._map, this.coords as CoordT[], result, projectedBounds)
+            this.projectMap(this._map, latlngs as LatLng[], result, projectedBounds)
         
         if ( this._canvas._hotline === undefined ) return;
         this._canvas._hotline.projectedData = [...result];

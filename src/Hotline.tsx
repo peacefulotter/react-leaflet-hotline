@@ -1,11 +1,12 @@
 
 
 import { FC } from 'react';
-import { IHotline } from './hotline';
+import { IHotline } from './types';
 import useHotline from './useHotline';
 
-const Hotline: FC<IHotline> = ( { data, options } ) => {
-    useHotline(data, options)
+function Hotline<T>( { data, getLat, getLng, getVal, options }: IHotline<T> ): FC<IHotline<T>>
+{
+    useHotline<T>(data, getLat, getLng, getVal, options)
     return null
 }
 
