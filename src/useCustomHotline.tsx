@@ -16,7 +16,7 @@ function useCustomHotline<T, U>(
     return ( 
         data: T[] | T[][],
         getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number,
-        options?: HotlineOptions     
+        options?: HotlineOptions, params?: any     
     )
     : [Renderer<U>, HotPolyline<T, U>] => 
     {
@@ -34,7 +34,7 @@ function useCustomHotline<T, U>(
         }, [options])
         
         useEffect( () => {
-            const _renderer = new RendererClass(options)
+            const _renderer = new RendererClass(options, params)
             const _polyline = new HotPolylineClass( _renderer, data, getLat, getLng, getVal )
 
             _polyline.addTo(map)
