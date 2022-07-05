@@ -77,17 +77,14 @@ import { useState } from 'react';
 import { Hotline } from 'react-leaflet-hotline';
 
 const Events = () => {
-    
-    const [toggle, setToggle] = useState(false)
-
     return (
-        <MapWrapper>
+        <MapWrapper>  
             <Hotline 
                 data={datas} 
                 getLat={t => t.lat} 
                 getLng={t => t.lng} 
-                getVal={t => t.value}
-                options={{min: 1, max: 8, tolerance: 10, palette: toggle ? palette_2 : palette_1}} 
+                getVal={(t, i) => i}
+                options={{min: 0, max: datas.length - 1, tolerance: 10 }} 
                 eventHandlers={{
                     click: (e, i, p) => alert('clicked on line: ' + i),
                     mouseover: (e, i, p) => p.setStyle({opacity: 0.5}),

@@ -32,12 +32,12 @@ export default class LatLngRenderer extends Renderer<HotData> {
                 const pointEnd = path[j];
 
                 if ( pointStart.i !== pointEnd.i )
-                    this._addGradient(pointStart, pointEnd);
+                    this._addGradient(i, pointStart, pointEnd);
             }
         }
     }
 
-    _addGradient(pointStart: HotPoint, pointEnd: HotPoint) 
+    _addGradient(i: number, pointStart: HotPoint, pointEnd: HotPoint) 
     {
         const ctx = this._ctx;
 
@@ -45,7 +45,7 @@ export default class LatLngRenderer extends Renderer<HotData> {
         
         // Create a gradient for each segment, pick start and end colors from palette gradient
         const gradient: CanvasGradient = ctx.createLinearGradient(pointStart.x, pointStart.y, pointEnd.x, pointEnd.y);
-       this.computeGradient(gradient, pointStart, pointEnd)
+       this.computeGradient(gradient, i, pointStart, pointEnd)
 
         ctx.lineWidth = this._options.weight
         ctx.strokeStyle = gradient;
@@ -55,13 +55,13 @@ export default class LatLngRenderer extends Renderer<HotData> {
         ctx.stroke();
     }
 
-    computeGradient(gradient: CanvasGradient, pointStart: HotPoint, pointEnd: HotPoint) 
+    computeGradient(gradient: CanvasGradient, i: number, pointStart: HotPoint, pointEnd: HotPoint) 
     {
         const deltaIndex = pointEnd.i - pointStart.i
 
         for ( let k = pointStart.i; k <= pointEnd.i; k++ )
         {
-            const point = this.projectedData[0][k]
+            const point = this.projectedData[i][k]
             const dist = (point.i - pointStart.i) / (deltaIndex !== 0 ? deltaIndex : 1)
             const rgb = this.getRGBForValue(point.z);
             this._addColorGradient(gradient, rgb, dist)

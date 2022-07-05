@@ -2,7 +2,7 @@ import L, { LatLng, Map } from 'leaflet';
 
 import { HotlineCanvas } from '../canvas/HotlineCanvas';
 import Renderer from '../renderers/Renderer';
-import { HotlineOptions } from '../types';
+import { HotlineGetter, HotlineOptions } from '../types';
 import clipSegment from './clipSegment';
 
 
@@ -14,18 +14,16 @@ export default class HotPolyline<T, U> extends L.Polyline
     constructor(
         renderer: Renderer<U>,
         coords: T[] | T[][], 
-        getLat: (t: T) => number,
-        getLng: (t: T) => number,
-        getVal: (t: T) => number,
+        getLat: HotlineGetter<T>,
+        getLng: HotlineGetter<T>,
+        getVal: HotlineGetter<T>,
     ) {
         const canvas = new HotlineCanvas<U>(renderer)
         
-        const getLatLngExpr = (t: T) => new LatLng( getLat(t), getLng(t), getVal(t) )
+        const getLatLngExpr = (t: T, i: number) => new LatLng( getLat(t, i), getLng(t, i), getVal(t, i) )
         const latlngs = Array.isArray(coords[0])
-            ? (coords as T[][]).map( (cs: T[]) => cs.map( getLatLngExpr ) )
+            ? (coords as T[][]).map( (cs: T[], i: number) => cs.map( c => getLatLngExpr(c, i) ) )
             : (coords as T[]).map( getLatLngExpr )
-
-        console.log(latlngs);
 
         super( latlngs as LatLng[] | LatLng[][], { renderer: canvas, interactive: false } )
 

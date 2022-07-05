@@ -20,7 +20,7 @@ export interface HotlineOptions {
 
 export type NewableRenderer<T> = new ( options?: HotlineOptions, ...params: any[] ) => Renderer<T>; 
 export type NewableHotPolyline<T, U> = new (
-	renderer: Renderer<U>, data: T[] | T[][], getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number
+	renderer: Renderer<U>, data: T[] | T[][], getLat: HotlineGetter<T>, getLng: HotlineGetter<T>, getVal: HotlineGetter<T>
 ) => HotPolyline<T, U>
 
 // LatLngHotline
@@ -31,11 +31,13 @@ export type HotData = HotPoint[]
 export type HotlineEventFn = (e: LeafletEvent, i: number, polyline: L.Polyline<any, any>) => void 
 export type HotlineEventHandlers = { [key in keyof LeafletEventHandlerFnMap]: HotlineEventFn } 
 
+export type HotlineGetter<T> = (t: T, i: number) => number;
+
 export interface HotlineProps<T> {
 	data: T[] | T[][];
-	getLat: (t: T) => number;
-	getLng: (t: T) => number;
-	getVal: (t: T) => number;
+	getLat: HotlineGetter<T>;
+	getLng: HotlineGetter<T>;
+	getVal: HotlineGetter<T>;
 	options?: HotlineOptions;
 	eventHandlers?: HotlineEventHandlers;
 }

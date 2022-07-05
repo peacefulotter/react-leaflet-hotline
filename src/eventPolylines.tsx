@@ -4,7 +4,7 @@ import { useMap } from "react-leaflet";
 import HotPolyline from "./core/HotPolyline";
 
 import { defaultOptions } from "./constants";
-import { HotlineEventHandlers, HotlineOptions } from "./types";
+import { HotlineEventHandlers, HotlineGetter, HotlineOptions } from "./types";
 
 const getWeight = ( { weight, tolerance }: HotlineOptions ) => 
     (weight ? weight : defaultOptions.weight) + 
@@ -13,7 +13,7 @@ const getWeight = ( { weight, tolerance }: HotlineOptions ) =>
 
 function eventPolylines<T, U>(
     map: Map,
-    data: T[] | T[][], getLat: (t: T) => number, getLng: (t: T) => number, 
+    data: T[] | T[][], getLat: HotlineGetter<T>, getLng: HotlineGetter<T>, 
     options: HotlineOptions, 
     eventHandlers?: HotlineEventHandlers 
 )
@@ -22,7 +22,7 @@ function eventPolylines<T, U>(
 
     const createPolyline = (_data: T[], i: number) => {
         const polyline = L.polyline( 
-            _data.map( (d: T) => ( { lat: getLat(d), lng: getLng(d) } ) ), 
+            _data.map( (d: T, i: number) => ( { lat: getLat(d, i), lng: getLng(d, i) } ) ), 
             {
                 color: 'red',
                 weight: getWeight(options),
