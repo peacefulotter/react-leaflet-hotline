@@ -26,7 +26,7 @@ module.exports = {
     //   { name: 'Installation', content: './docs/Installation.md', sectionDepth: 1 },
       ...getDocFiles()
     ],
-    require: [path.join(docsPath, 'utils', '_setup.js')],
+    require: [path.join(docsPath, 'utils', '_setup.js'), path.join(docsPath, 'utils', '_custom.css')],
     webpackConfig() {
         return {
             resolve: {

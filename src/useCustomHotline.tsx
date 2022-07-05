@@ -1,7 +1,7 @@
 
 
 import { useEffect, useState } from 'react'
-import { useMapEvents } from 'react-leaflet'
+import { useMap } from 'react-leaflet'
 import L from 'leaflet'
 
 import { HotlineProps, NewableHotPolyline, NewableRenderer } from './types';
@@ -19,10 +19,11 @@ function useCustomHotline<T, U>(
     if ( !L.Browser.canvas ) 
         throw new Error('no Browser canvas')
 
-    const map = useMapEvents({})
+    const map = useMap()
 
-    const [renderer, setRenderer] = useState<Renderer<U>>(undefined)
-    const [hotline, setHotline] = useState<HotPolyline<T, U>>(undefined)
+    const [renderer,  setRenderer]  = useState<Renderer<U>>(undefined)
+    const [hotline,   setHotline]   = useState<HotPolyline<T, U>>(undefined)
+    const [polylines, setPolylines] = useState<L.Polyline[]>([])
 
     // separate useEffect to avoid recreating a new hotline when some options change
     useEffect( () => {
@@ -35,19 +36,25 @@ function useCustomHotline<T, U>(
         const _hotline = new HotPolylineClass( _renderer, data, getLat, getLng, getVal );
 
         _hotline.addTo(map);
+        polylines.forEach( p => p.bringToFront() );
 
         setRenderer(_renderer);
         setHotline(_hotline);
-
-        // transparent polyline on top of the hotline that handles the events
-        const polylines = eventPolylines( map, data, getLat, getLng, options, eventHandlers )
         
         return () => { 
-            polylines.forEach( polyline => polyline.remove() )
             _hotline.remove()
             map.removeLayer(_hotline);
         }
-    }, [data])
+    }, [map, data])
+
+    // transparent polyline on top of the hotline that handles the events
+    useEffect( () => {
+        const _polylines = eventPolylines( map, data, getLat, getLng, options, eventHandlers )
+        setPolylines(_polylines)
+        return () => { 
+            _polylines.forEach( polyline => polyline.remove() )
+        }
+    }, [map, data])
     
     return { renderer, hotline }
 }

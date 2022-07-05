@@ -40,3 +40,44 @@ const Events = () => {
 
 <Events />
 ```
+
+## Using the useHotline hook
+```jsx harmony
+import { useState } from 'react';
+import { useHotline } from 'react-leaflet-hotline';
+
+const HookEventHotline = () => {
+    const [toggle, setToggle] = useState(false)
+
+    const update = () => setToggle(prev => !prev)
+
+    useHotline( { 
+        data, 
+        getLat: t => t.lat, 
+        getLng: t => t.lng, 
+        getVal: t => t.value, 
+        options: {
+            ...options,
+            tolerance: 10, 
+            palette: toggle ? palette_2 : palette_1
+        }, 
+        eventHandlers: {
+            click: update, 
+            mouseover: update,
+            mouseout: update
+        } 
+    } )
+
+    return null;
+}
+
+const Events = () => {
+    return (
+        <MapWrapper>
+            <HookEventHotline />
+        </MapWrapper>
+    )
+}
+
+<Events />
+```

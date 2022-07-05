@@ -1,0 +1,22 @@
+
+
+.rsg--content-3 {
+    max-width: none !important;
+}
+
+.rsg--root-25 {
+    display: grid;
+    grid-template-columns: 45% 50%;
+    gap: 30px !important;
+}
+
+.rsg--preview-26 {
+    padding: 0px !important;
+    border: none !important;
+    max-width: none !important;
+    height: min-content !important;
+}
+
+.rsg--controls-27 {
+    display: none !important;
+}

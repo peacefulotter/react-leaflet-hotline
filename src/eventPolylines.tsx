@@ -18,7 +18,7 @@ function eventPolylines<T, U>(
     eventHandlers?: HotlineEventHandlers 
 )
 {
-    if ( eventHandlers === undefined ) return;
+    if ( eventHandlers === undefined ) return [];
 
     const createPolyline = (_data: T[], i: number) => {
         const polyline = L.polyline( 

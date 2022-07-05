@@ -28,7 +28,7 @@ const Demo = () => {
                 getLat={t => t.lat} 
                 getLng={t => t.lng} 
                 getVal={t => t.value}
-                options={{min: 1, max: 8, palette}} />
+                options={{...options, palette}} />
         </MapWrapper>
     )
 }

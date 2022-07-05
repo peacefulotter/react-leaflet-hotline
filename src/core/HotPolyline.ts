@@ -27,7 +27,7 @@ export default class HotPolyline<T, U> extends L.Polyline
                 : getLatLngExpr(cs)
         )
 
-        super( latlngs as LatLng[] | LatLng[][], { renderer: canvas, interactive: true } )
+        super( latlngs as LatLng[] | LatLng[][], { renderer: canvas, interactive: false } )
 
         this.projectMap = renderer.projectLatLngs;
         this._canvas = canvas;

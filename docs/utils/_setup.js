@@ -10,7 +10,7 @@ const MapWrapper = window.MapWrapper = ( { style, ...props } ) => {
 	const { children } = props;
 
 	return (
-        <div style={{position: 'relative', width: '800px', height: '600px'}}> 
+        <div style={{position: 'relative', height: '500px'}}> 
             <MapContainer 
                 center={[55.761, 12.518]} 
                 zoom={16}
@@ -39,4 +39,21 @@ const data = window.data = [
     { lat: 55.7587234, lng: 12.5158659, value: 2 },
 ]
 
-export default { MapWrapper, data };
+const options = window.options = {
+    min: 1, 
+    max: 8, 
+}
+
+const palette_1 = window.palette_1 = [
+    { r: 50,  g: 50,  b: 200, t: 0   },
+    { r: 50,  g: 200, b: 50,  t: 0.5 },
+    { r: 200, g: 50,  b: 50,  t: 1   }
+]
+
+const palette_2 = window.palette_2 = [
+    { r: 200, g: 50,  b: 50,  t: 0   },
+    { r: 50,  g: 200, b: 50,  t: 0.5 },
+    { r: 50,  g: 50,  b: 200, t: 1   }
+]
+
+export default { MapWrapper, data, options, palette_1, palette_2 };
