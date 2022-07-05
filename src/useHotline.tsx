@@ -1,19 +1,16 @@
 
 
-import { HotlineOptions, HotData } from './types';
+import { HotlineOptions, HotData, HotlineProps } from './types';
 import LatLngRenderer from './renderers/LatLngRenderer';
 import HotPolyline from './core/HotPolyline';
 import useCustomHotline from './useCustomHotline';
 
-function useHotline<T>( 
-    data: T[], 
-    getLat: (t: T) => number, getLng: (t: T) => number, getVal: (t: T) => number, 
-    options?: HotlineOptions 
-)
+function useHotline<T>( opts: HotlineProps<T> )
 {
-    const createHotline = useCustomHotline<T, HotData>( LatLngRenderer, HotPolyline<T, HotData> )
-
-    const hotline = createHotline( data, getLat, getLng, getVal, options )
+    const hotline = useCustomHotline<T, HotData>( 
+        LatLngRenderer, HotPolyline<T, HotData>, 
+        opts 
+    )
 
     return hotline;
 }

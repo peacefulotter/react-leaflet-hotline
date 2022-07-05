@@ -30,8 +30,12 @@ const Events = () => {
                 getLat={t => t.lat} 
                 getLng={t => t.lng} 
                 getVal={t => t.value}
-                options={{min: 1, max: 8, palette: toggle ? palette_2 : palette_1}} 
-                click={(e) => setToggle(prev => !prev)}/>
+                options={{min: 1, max: 8, tolerance: 10, palette: toggle ? palette_2 : palette_1}} 
+                eventHandlers={{
+                    click: (e) => setToggle(prev => !prev),
+                    mouseover: (e) => setToggle(prev => !prev),
+                    mouseout: (e) => setToggle(prev => !prev)
+                }} />
         </MapWrapper>
     )
 }
