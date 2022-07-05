@@ -1,7 +1,5 @@
 
-### Click Event
-
-Click on the hotline to see it in action!
+### Move your mouse over and out / click on the hotline
 
 ```jsx harmony
 import { useState } from 'react';
