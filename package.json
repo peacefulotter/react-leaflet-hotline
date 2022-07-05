@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-hotline",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Ported Leaflet.Hotline to React and Typescript. Create leaflet Polylines with colored gradients",
   "main": "lib/index.js",
   "module": "lib/esm/index.js",
