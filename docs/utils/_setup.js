@@ -14,7 +14,8 @@ const MapWrapper = window.MapWrapper = ( { style, ...props } ) => {
             <MapContainer 
                 center={[55.761, 12.518]} 
                 zoom={16}
-                style={{width: '100%', height: '100%'}} 
+                style={{width: '100%', height: '100%'}}
+                preferCanvas={true} 
             >
                 <TileLayer
                     maxNativeZoom={18}
@@ -39,6 +40,12 @@ const data = window.data = [
     { lat: 55.7587234, lng: 12.5158659, value: 2 },
 ]
 
+const datas = window.datas = [ data, [
+    { lat: 55.7593927, lng: 12.5140125, value: 6 },
+    { lat: 55.7593480, lng: 12.5129510, value: 4 },
+    { lat: 55.7587234, lng: 12.5108659, value: 2 },
+] ]
+
 const options = window.options = {
     min: 1, 
     max: 8, 
@@ -56,4 +63,4 @@ const palette_2 = window.palette_2 = [
     { r: 50,  g: 50,  b: 200, t: 1   }
 ]
 
-export default { MapWrapper, data, options, palette_1, palette_2 };
+export default { MapWrapper, data, datas, options, palette_1, palette_2 };

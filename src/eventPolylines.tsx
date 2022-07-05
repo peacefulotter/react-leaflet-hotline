@@ -31,7 +31,7 @@ function eventPolylines<T, U>(
         )
 
         Object.entries(eventHandlers).forEach( ([k, v]) => {
-            polyline.on( k, e => v(e, i) )
+            polyline.on( k, e => v(e, i, polyline) )
         } )
 
         return polyline.addTo( map )

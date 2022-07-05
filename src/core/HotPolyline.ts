@@ -21,11 +21,11 @@ export default class HotPolyline<T, U> extends L.Polyline
         const canvas = new HotlineCanvas<U>(renderer)
         
         const getLatLngExpr = (t: T) => new LatLng( getLat(t), getLng(t), getVal(t) )
-        const latlngs = coords.map( (cs: T | T[]) => 
-            Array.isArray(cs) 
-                ? cs.map( getLatLngExpr )
-                : getLatLngExpr(cs)
-        )
+        const latlngs = Array.isArray(coords[0])
+            ? (coords as T[][]).map( (cs: T[]) => cs.map( getLatLngExpr ) )
+            : (coords as T[]).map( getLatLngExpr )
+
+        console.log(latlngs);
 
         super( latlngs as LatLng[] | LatLng[][], { renderer: canvas, interactive: false } )
 

@@ -1,5 +1,5 @@
 
-import { LeafletEvent, LeafletEventHandlerFn, LeafletEventHandlerFnMap, LeafletMouseEvent } from "leaflet";
+import L, { LeafletEvent, LeafletEventHandlerFnMap } from "leaflet";
 import HotPolyline from "./core/HotPolyline";
 import Renderer from "./renderers/Renderer";
 
@@ -28,7 +28,8 @@ export type NewableHotPolyline<T, U> = new (
 export interface HotPoint { x: number, y: number, z: number, i: number }
 export type HotData = HotPoint[]
 
-export type HotlineEventHandlers = { [key in keyof LeafletEventHandlerFnMap]: (e: LeafletEvent, i: number) => void } 
+export type HotlineEventFn = (e: LeafletEvent, i: number, polyline: L.Polyline<any, any>) => void 
+export type HotlineEventHandlers = { [key in keyof LeafletEventHandlerFnMap]: HotlineEventFn } 
 
 export interface HotlineProps<T> {
 	data: T[] | T[][];
