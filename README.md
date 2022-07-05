@@ -18,7 +18,8 @@
   <ul style='margin-top: 10px'>
     <li><b>Typescript</b> support</li>
     <li>Both <b>Hook</b> and standalone <b>Component</b> available</li>
-     <li>Highly customizable</li>
+    <li>Highly customizable</li>
+    <li>Support events (onClick, and more in the future)</li>
     <li>Lightweight: <b> <100 kB </b> </li>
   </ul>
 </div>

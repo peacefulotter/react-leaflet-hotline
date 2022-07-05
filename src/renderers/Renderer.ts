@@ -37,7 +37,7 @@ abstract class Renderer<T> extends L.Renderer {
     setOptions(options?: HotlineOptions)
     {
         this._options = Object.assign(defaultOptions, options);
-        this.palette(options?.palette || defaultPalette);
+        this.palette(this._options.palette);
     }
 
     setCanvas(canvas: HTMLCanvasElement)

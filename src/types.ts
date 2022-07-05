@@ -1,4 +1,5 @@
 
+import { LeafletEventHandlerFn } from "leaflet";
 import HotPolyline from "./core/HotPolyline";
 import Renderer from "./renderers/Renderer";
 
@@ -14,7 +15,7 @@ export interface HotlineOptions {
 	outlineWidth?: number;
 	outlineColor?: string;
 	palette?: Palette;
-	onclick?: (e: any) => void;
+	tolerance?: number;
 }
 
 export type NewableRenderer<T> = new ( options?: HotlineOptions, ...params: any[] ) => Renderer<T>; 
@@ -33,4 +34,5 @@ export interface IHotline<T> {
 	getLng: (t: T) => number;
 	getVal: (t: T) => number;
 	options?: HotlineOptions;
+	click?: LeafletEventHandlerFn;
 }

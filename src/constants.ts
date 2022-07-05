@@ -13,5 +13,5 @@ export const defaultOptions: Required<HotlineOptions> = {
     outlineColor: 'black',
     weight: 7,
     palette: defaultPalette,
-    onclick: () => undefined
+    tolerance: 3
 }

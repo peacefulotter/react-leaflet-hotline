@@ -3,7 +3,7 @@ import L, { RendererOptions } from 'leaflet'
 import Renderer from '../renderers/Renderer';
 
 
-export class HotlineCanvas<DataT> extends L.Canvas 
+export class HotlineCanvas<DataT> extends L.Canvas
 {
     _hotline: Renderer<DataT>;
 

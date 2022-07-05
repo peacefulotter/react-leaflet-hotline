@@ -40,11 +40,6 @@ export default class HotPolyline<T, U> extends L.Polyline
         this.redraw()
     }
 
-    destroy()
-    {
-        this._canvas._destroyContainer()
-    }
-
     _projectLatlngs(latlngs: LatLng[] | LatLng[][], result: any, projectedBounds: any) 
     {
         if ( Array.isArray(latlngs[0]) ) 
