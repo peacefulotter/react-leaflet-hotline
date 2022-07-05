@@ -22,7 +22,7 @@ function eventPolylines<T, U>(
 
     const createPolyline = (_data: T[], i: number) => {
         const polyline = L.polyline( 
-            _data.map( (d: T, i: number) => ( { lat: getLat(d, i), lng: getLng(d, i) } ) ), 
+            _data.map( (d: T) => ( { lat: getLat(d, i), lng: getLng(d, i) } ) ), 
             {
                 color: 'red',
                 weight: getWeight(options),
