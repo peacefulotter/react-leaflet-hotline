@@ -11,7 +11,7 @@ const Demo = () => {
     useEffect( () => {
         const interval = setInterval( () => {
             s( p => [...p, { lat: Math.random() * 50, lng: Math.random() * 50, value: 0}])
-        }, 1000 )
+        }, 5000 )
     }, [])
 
     return (
@@ -21,7 +21,11 @@ const Demo = () => {
                 getLat={t => t.lat} 
                 getLng={t => t.lng} 
                 getVal={t => t.value}
-                options={options} />
+                options={options}
+                eventHandlers={{
+                    'click': () => console.log('click'),
+                    'mouseover': () => console.log('mouseover')
+                }} />
         </MapWrapper>
     )
 }
