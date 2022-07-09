@@ -42,8 +42,8 @@ function useCustomHotline<T, U>(
         setHotline(_hotline);
         
         return () => { 
+            _renderer.remove()
             _hotline.remove()
-            map.removeLayer(_hotline);
         }
     }, [map, data])
 

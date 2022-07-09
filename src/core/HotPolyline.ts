@@ -31,6 +31,12 @@ export default class HotPolyline<T, U> extends L.Polyline
         this._canvas = canvas;
     }
 
+    remove() {
+        super.remove()
+        this._canvas.remove()
+        return this;
+    }
+
     setOptions(options?: HotlineOptions)
     {
         this._canvas._hotline.setOptions(options)
