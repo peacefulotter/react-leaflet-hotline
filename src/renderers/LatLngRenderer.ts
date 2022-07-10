@@ -1,31 +1,31 @@
 
 import { LatLng, Map } from 'leaflet';
 
-import { HotData, HotPoint } from '../types';
+import { HotPoint } from '../types';
 import Renderer from './Renderer';
 
 
-export default class LatLngRenderer extends Renderer<HotData> {
+export default class LatLngRenderer extends Renderer<HotPoint[]> {
 
-    projectLatLngs(_map: Map, latlngs: LatLng[], result: any, projectedBounds: any)
+    projectLatLngs(_map: Map, latlngs: LatLng[], result: HotPoint[][], projectedBounds: any, p: number)
     {
         const len = latlngs.length;
-        const ring: any[] = [];
+        const rings: HotPoint[] = [];
         for (let i = 0; i < len; i++) 
         {
-            ring[i] = _map.latLngToLayerPoint(latlngs[i]);
-            ring[i].z = latlngs[i].alt;
-            ring[i].i = i
-            projectedBounds.extend(ring[i]);
+            const { x, y } = _map.latLngToLayerPoint(latlngs[i]);
+            const { alt: v } = latlngs[i]
+            rings[i] = { x, y, v, p, i } 
+            projectedBounds.extend(rings[i]);
         }
-        result.push(ring);
+        result.push(rings);
     }
 
     _drawHotline(): void 
     {
         for (let i = 0, dataLength = this._data.length; i < dataLength; i++) 
         {
-            const path = this._data[i] as any;
+            const path = this._data[i];
             for (let j = 1, pathLength = path.length; j < pathLength; j++) 
             {
                 const pointStart = path[j - 1];
@@ -63,7 +63,7 @@ export default class LatLngRenderer extends Renderer<HotData> {
         {
             const point = this.projectedData[i][k]
             const dist = (point.i - pointStart.i) / (deltaIndex !== 0 ? deltaIndex : 1)
-            const rgb = this.getRGBForValue(point.z);
+            const rgb = this.getRGBForValue(point.v);
             this._addColorGradient(gradient, rgb, dist)
         }
     } 

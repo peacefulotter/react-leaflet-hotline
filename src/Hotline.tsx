@@ -3,7 +3,7 @@
 import { ReactElement } from 'react';
 
 import { HotlineProps } from './types';
-import useHotline from './useHotline';
+import useHotline from './hooks/useHotline';
 
 function Hotline<T>( { data, getLat, getLng, getVal, options, eventHandlers }: HotlineProps<T> ): ReactElement<any, any>
 {

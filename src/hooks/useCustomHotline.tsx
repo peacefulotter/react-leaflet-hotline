@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react'
 import { useMap } from 'react-leaflet'
 import L from 'leaflet'
 
-import { HotlineProps, NewableHotPolyline, NewableRenderer } from './types';
-import Renderer from './renderers/Renderer';
-import HotPolyline from './core/HotPolyline';
-import eventPolylines from './eventPolylines';
-import Converter from './converter';
+import useEventPolylines from './useEventPolylines';
+import { HotlineProps, NewableHotPolyline, NewableRenderer } from '../types';
+import Renderer from '../renderers/Renderer';
+import HotPolyline from '../core/HotPolyline';
+import Converter from '../converter';
 
 function useCustomHotline<T, U>( 
     RendererClass: NewableRenderer<U>, 
@@ -24,7 +24,9 @@ function useCustomHotline<T, U>(
 
     const [renderer,  setRenderer]  = useState<Renderer<U>>(undefined)
     const [hotline,   setHotline]   = useState<HotPolyline<T, U>>(undefined)
-    // const [polylines, setPolylines] = useState<L.Polyline[]>(undefined)
+
+    // transparent polyline on top of the hotline that handles the events
+    useEventPolylines( map, hotline, data, getLat, getLng, options, eventHandlers )
 
     // separate useEffect to avoid recreating a new hotline when some options change
     useEffect( () => {
@@ -52,18 +54,6 @@ function useCustomHotline<T, U>(
         const latlngs = Converter.toLatLngs( data, getLat, getLng, getVal )
         hotline.setLatLngs( latlngs )
     }, [data] )
-
-    // transparent polyline on top of the hotline that handles the events
-    useEffect( () => {
-        if ( hotline === undefined ) return;
-
-        const _polylines = eventPolylines( map, data, getLat, getLng, options, eventHandlers )
-        // setPolylines(_polylines)
-
-        return () => { 
-            _polylines.forEach( polyline => polyline.remove() )
-        }
-    }, [data, hotline])
 
     return { renderer, hotline }
 }

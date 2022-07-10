@@ -1,7 +1,7 @@
 
 Data changing over dynamically doesn't leave an empty canvas behind
 ```jsx harmony
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Hotline } from 'react-leaflet-hotline';
 
 const Demo = () => {
@@ -14,6 +14,13 @@ const Demo = () => {
         }, 5000 )
     }, [])
 
+    const eventHandlers = useMemo( () => ({
+        'mouseover': (e, i, p) => p.setStyle( { color: '#e6e', opacity: 0.5 } ),
+        'mouseout': (e, i, p) => p.setStyle( {opacity: 0 } ),
+        'mousedown': (e, i, p) => p.setStyle( {opacity: 1 } ),
+        'mouseup': (e, i, p) => p.setStyle( {opacity: 0.5 } ),
+    }), [])
+
     return (
         <MapWrapper>
             <Hotline 
@@ -21,11 +28,8 @@ const Demo = () => {
                 getLat={t => t.lat} 
                 getLng={t => t.lng} 
                 getVal={t => t.value}
-                options={options}
-                eventHandlers={{
-                    'click': () => console.log('click'),
-                    'mouseover': () => console.log('mouseover')
-                }} />
+                options={{...options, tolerance: 10}}
+                eventHandlers={eventHandlers} />
         </MapWrapper>
     )
 }

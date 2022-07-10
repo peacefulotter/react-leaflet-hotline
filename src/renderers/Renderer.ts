@@ -36,7 +36,7 @@ abstract class Renderer<T> extends L.Renderer {
 
     setOptions(options?: HotlineOptions)
     {
-        this._options = Object.assign(defaultOptions, options);
+        this._options = { ...defaultOptions, ...options };
         this.palette(this._options.palette);
     }
 
@@ -186,7 +186,7 @@ abstract class Renderer<T> extends L.Renderer {
 
     onProjected() { return 0 };
 
-    abstract projectLatLngs(_map: Map, latlngs: any[], result: any, projectedBounds: any): void;
+    abstract projectLatLngs(_map: Map, latlngs: any[], result: any, projectedBounds: any, p: number): void;
 
     /**
      * Draws the color encoded hotline of the graphs.
