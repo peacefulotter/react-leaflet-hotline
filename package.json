@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-hotline",
-  "version": "1.4.2",
+  "version": "1.4.4",
   "description": "Ported Leaflet.Hotline to React and Typescript. Create leaflet Polylines with colored gradients",
   "main": "lib/index.js",
   "module": "lib/esm/index.js",
@@ -51,11 +51,6 @@
     "url": "https://natmai.netlify.app"
   },
   "license": "MIT",
-  "peerDependencies": {
-    "leaflet": "^1.8.0",
-    "react": ">=17.0.1",
-    "react-leaflet": "^3.0.0"
-  },
   "devDependencies": {
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
@@ -73,5 +68,10 @@
     "typescript": "^4.7.4",
     "url-loader": "^4.1.1",
     "webpack": "^5.73.0"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "react": "^18.2.0",
+    "react-leaflet": "^4.2.1"
   }
 }

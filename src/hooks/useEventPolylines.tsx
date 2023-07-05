@@ -2,13 +2,12 @@ import L, { Map, PolylineOptions } from "leaflet";
 import { useEffect, useState } from "react";
 
 import { defaultOptions } from "../constants";
-import Converter from "../converter";
 import HotPolyline from "../core/HotPolyline";
 import { HotlineEventHandlers, HotlineGetter, HotlineOptions } from "../types";
 
-const getWeight = ( { weight, tolerance }: HotlineOptions ) => 
-    (weight ? weight : defaultOptions.weight) + 
-    (tolerance ? tolerance : defaultOptions.tolerance)
+const getWeight = ( options: HotlineOptions ) => 
+    (options.weight ? options.weight : defaultOptions.weight) + 
+    (options.tolerance ? options.tolerance : defaultOptions.tolerance)
 
 
 function useEventPolylines<T, U>(
