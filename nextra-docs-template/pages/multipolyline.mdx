@@ -1,0 +1,26 @@
+
+import MultiPolyline from '../components/dynamics/MultiPolyline'
+
+<MultiPolyline />
+
+```tsx filename="demo.js" {2,11-16} copy
+import MapWrapper from "./map/MapWrapper";
+import { Hotline } from 'react-leaflet-hotline';
+
+type T = {
+    lat: number; lng: number; value: number;
+}
+
+export default function MultiPolyline() {
+    return (
+        <MapWrapper>  
+            <Hotline 
+                data={datas} 
+                getLat={(t: T) => t.lat} 
+                getLng={(t: T) => t.lng} 
+                getVal={(t: T) => t.value}
+                options={{ ...options, min: 0, max: 5, tolerance: 10 }}  />
+        </MapWrapper>
+    )
+}
+```

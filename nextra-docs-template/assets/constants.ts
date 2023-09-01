@@ -9,7 +9,7 @@ export const data = [
     { lat: 55.7587234, lng: 12.5158659, value: 2 },
 ]
 
-export const datas = [ 
+export const datas: {lat: number, lng: number, value: number}[][] = [ 
     [ 
         { lat:  55.7620299 , lng:  12.5197298, value: 0 } , 
         { lat:  55.7615605 , lng:  12.5194112, value: 1 } , 

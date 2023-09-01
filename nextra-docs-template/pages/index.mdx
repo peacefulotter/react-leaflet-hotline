@@ -1,6 +1,23 @@
 
-# Demo
 
-import Demo from '../components/Demo'
+import Demo from '../components/dynamics/Demo'
 
 <Demo />
+
+```tsx filename="demo.js" {2,7-12} copy
+import MapWrapper from "./map/MapWrapper";
+import { Hotline } from 'react-leaflet-hotline';
+
+export default function Demo() {
+	return (
+		<MapWrapper>
+			<Hotline
+				data={data} 
+				getLat={t => t.lat} 
+				getLng={t => t.lng} 
+				getVal={t => t.value}
+				options={{...options, tolerance: 10}} />
+		</MapWrapper>
+	)
+}
+```

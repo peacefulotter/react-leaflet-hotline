@@ -1,10 +1,6 @@
-import dynamic from "next/dynamic";
 
 import { data, options } from '../assets/constants';
-
-const MapWrapper = dynamic(() => import("./map/MapWrapper"), {
-	ssr: false
-});
+import MapWrapper from "./map/MapWrapper";
 import { Hotline } from 'react-leaflet-hotline';
 
 export default function Demo() {

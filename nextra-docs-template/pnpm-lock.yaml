@@ -21,8 +21,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   react-leaflet-hotline:
-    specifier: ^1.4.6
-    version: 1.4.6(react-dom@18.2.0)
+    specifier: ^1.4.7
+    version: 1.4.7(react-dom@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -2858,8 +2858,8 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /react-leaflet-hotline@1.4.6(react-dom@18.2.0):
-    resolution: {integrity: sha512-VWxG6FX8PiCQQlmjK8mwVV4mfdr0bN4QmeRDGr2VoB+1Sh8wYFkjoNEOSsrOG0msHSflpSTy+GsNmzbVRqgprw==}
+  /react-leaflet-hotline@1.4.7(react-dom@18.2.0):
+    resolution: {integrity: sha512-ehc3Da+H0iLqY/Jl8ekQOlqkL8EIuZeyQRXeHQ2ZWB3vewQBDCs3jI4zmyVYlEY/YpS5ZDfVQJ0VOD9AgzDslg==}
     dependencies:
       leaflet: 1.9.4
       react: 18.2.0
