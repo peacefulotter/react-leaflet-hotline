@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "react-leaflet-hotline-docs",
   "version": "0.0.1",
   "description": "react-leaflet-hotline docs",
@@ -12,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/peacefulotter/react-leaflet-hotline.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "peacefulotter",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/peacefulotter/react-leaflet-hotline/issues"
@@ -24,7 +23,7 @@
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-leaflet-hotline": "^1.4.4"
+    "react-leaflet-hotline": "^1.4.5"
   },
   "devDependencies": {
     "@types/node": "18.11.10",
