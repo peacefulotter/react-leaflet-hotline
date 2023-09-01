@@ -26,7 +26,7 @@
 <div>
   <p align="center">
     <a href="https://react-leaflet-hotline.netlify.app" target="_blank">
-    Live playground here 🎨
+    Live playground with examples here 🎨
     </a>
   </p>
 </div>
