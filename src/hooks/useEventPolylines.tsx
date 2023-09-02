@@ -5,15 +5,15 @@ import { defaultOptions } from "../constants";
 import HotPolyline from "../core/HotPolyline";
 import { HotlineEventHandlers, HotlineGetter, HotlineOptions } from "../types";
 
-const getWeight = ( options: HotlineOptions ) => 
-    (options.weight ? options.weight : defaultOptions.weight) + 
-    (options.tolerance ? options.tolerance : defaultOptions.tolerance)
+const getWeight = ( options?: HotlineOptions ) => 
+    (options && options.weight ? options.weight : defaultOptions.weight) + 
+    (options && options.tolerance ? options.tolerance : defaultOptions.tolerance)
 
 
 function useEventPolylines<T, U>(
     map: Map, hotline: HotPolyline<T, U>,
     data: T[] | T[][], getLat: HotlineGetter<T>, getLng: HotlineGetter<T>, 
-    options: HotlineOptions, 
+    options?: HotlineOptions, 
     eventHandlers?: HotlineEventHandlers 
 ): null
 {
