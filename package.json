@@ -1,24 +1,22 @@
 {
   "name": "react-leaflet-hotline",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "Ported Leaflet.Hotline to React and Typescript. Create leaflet Polylines with colored gradients",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "exports": {
-      ".": {
-          "import": "./lib/esm/index.js",
-          "require": "./lib/cjs/index.js"
-      }
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js",
+    "default": "./dist/esm/index.js"
   },
-  "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo 'Error, not yet implemented'",
-    "clean": "rm -rf ./lib",
+    "clean": "rm -rf ./dist",
     "prebuild": "npm run clean",
     "build-cjs": "tsc --project ./tsconfig.cjs.json",
     "build-esm": "tsc --project ./tsconfig.esm.json",
-    "build-types": "tsc --project ./tsconfig.types.json",
-    "build": "npm run build-cjs && npm run build-esm && npm run build-types && ./build-fixup && echo '\\033[1;32m Successfully built \\033[0m'",
+    "build": "npm run build-cjs && npm run build-esm && echo '\\033[1;32m Successfully built \\033[0m'",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
@@ -37,7 +35,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PeacefulOtter/react-leaflet-hotline.git"
+    "url": "git+https://github.com/peacefulotter/react-leaflet-hotline.git"
   },
   "keywords": [
     "leaflet",
@@ -49,7 +47,7 @@
     "map"
   ],
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ],
   "author": {
     "name": "PeacefulOtter",

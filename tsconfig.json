@@ -1,13 +1,12 @@
 {
     "compilerOptions": {
+        "module": "ES2022",
         "rootDir": "./src",
-        "outDir": "./lib",
-        "declaration": true,
+        "declaration": false,
         "inlineSourceMap": false,
         "noImplicitAny": true,
         "target": "es2015",
         "jsx": "react-jsx",
-        "lib": ["esnext", "dom"],
         "allowJs": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
@@ -18,5 +17,5 @@
         "resolveJsonModule": true,
     },
     "include": ["src"],
-    "exclude": ["node_modules", "**/test/*", "lib", "docs", "build", "dist-docs"]
+    "exclude": ["node_modules", "**/test/*", "dist", "docs", "build", "dist-docs"]
   }
