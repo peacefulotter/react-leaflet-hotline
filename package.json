@@ -32,7 +32,7 @@
     "lint": "tslint -p tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "build-docs": "npx del-cli dist-docs && npx styleguidist build",
-    "build-docs-2": "rm -rf ./dist-docs && cd nextra-docs-template && npm run build",
+    "build-docs-2": "cd nextra-docs-template && npm install && npm run build",
     "docs": "npx styleguidist server",
     "docs-2": "cd nextra-docs-template && npm start"
   },
