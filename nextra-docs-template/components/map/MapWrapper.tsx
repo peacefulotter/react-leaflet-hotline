@@ -7,7 +7,7 @@ export default function MapWrapper( { ...props } ) {
 	const { children } = props;
 
 	return (
-        <div style={{position: 'relative', height: '500px'}}> 
+        <div className='relative h-[500px] mt-5'> 
             <MapContainer 
                 center={[55.7605, 12.518]} 
                 zoom={16}

@@ -1,3 +1,5 @@
+import { HotlineOptions } from "react-leaflet-hotline"
+
 export const data = [
     { lat: 55.7620299, lng: 12.5197298, value: 1 },
     { lat: 55.7615605, lng: 12.5194112, value: 2 },
@@ -47,9 +49,18 @@ export const datas: {lat: number, lng: number, value: number}[][] = [
     ]
 ]
 
-export const options = {
-    min: 1, 
-    max: 8, 
+export const options: HotlineOptions = {
+    min: 1,
+    max: 8,
+    outlineWidth: 0,
+    outlineColor: 'black',
+    weight: 7,
+    palette: [
+        { r: 0,   g: 160, b: 0,  t: 0    },
+        { r: 255, g: 255, b: 0,  t: 0.5  },
+        { r: 255, g: 0,   b: 0,  t: 1    },
+    ],
+    tolerance: 3
 }
 
 export const palette_1 = [
