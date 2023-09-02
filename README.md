@@ -1,6 +1,7 @@
 [![License:MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![npm](https://img.shields.io/npm/v/react-leaflet-hotline)
 ![GitHub last commit](https://img.shields.io/github/last-commit/peacefulotter/react-leaflet-hotline)
+![npm package minimized gzipped size (select exports)](https://img.shields.io/bundlejs/size/react-leaflet-hotline)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/48c9fde3-3471-4408-9f78-0528bc484cc1/deploy-status)](https://app.netlify.com/sites/react-leaflet-hotline/deploys)
 ![GitHub stars](https://img.shields.io/github/stars/peacefulotter/react-leaflet-hotline?style=social)
 
@@ -20,7 +21,6 @@
     <li>Both standalone <b>Component</b> and <b>Hook</b> available</li>
     <li>Highly customizable</li>
     <li>Supports all leaflet events (click, mouseover, mouseout, ...)</li>
-    <li>Lightweight: <b> ~100 kB </b> </li>
   </ul>
 </div>
 

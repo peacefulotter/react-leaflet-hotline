@@ -32,7 +32,9 @@
     "lint": "tslint -p tsconfig.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "build-docs": "npx del-cli dist-docs && npx styleguidist build",
-    "docs": "npx styleguidist server"
+    "build-docs-2": "rm -rf ./dist-docs && cd nextra-docs-template && npm run build",
+    "docs": "npx styleguidist server",
+    "docs-2": "cd nextra-docs-template && npm start"
   },
   "browserslist": [
     ">1%",
@@ -51,15 +53,17 @@
     "colors",
     "color",
     "hotline",
-    "map"
+    "map",
+    "react-leaflet",
+    "canvas",
+    "typescript"
   ],
   "files": [
     "dist/**/*"
   ],
   "author": {
-    "name": "PeacefulOtter",
-    "email": "nathan.maire@epfl.ch",
-    "url": "https://natmai.netlify.app"
+    "name": "peacefulotter",
+    "email": "nathan.maire@epfl.ch"
   },
   "license": "MIT",
   "devDependencies": {
@@ -78,9 +82,7 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.7.4",
     "url-loader": "^4.1.1",
-    "webpack": "^5.73.0"
-  },
-  "dependencies": {
+    "webpack": "^5.73.0",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-leaflet": "^4.2.1"
