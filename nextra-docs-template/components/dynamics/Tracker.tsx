@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
 
-export default dynamic(() => import('../Demo'), {
+export default dynamic(() => import('../Tracker'), {
     ssr: false
 });

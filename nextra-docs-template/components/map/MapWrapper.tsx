@@ -9,8 +9,8 @@ export default function MapWrapper( { ...props } ) {
 	return (
         <div style={{position: 'relative', height: '500px'}}> 
             <MapContainer 
-                center={[55.761, 12.518]} 
-                zoom={17}
+                center={[55.7605, 12.518]} 
+                zoom={16}
                 style={{width: '100%', height: '100%'}}
                 preferCanvas={true} 
             >

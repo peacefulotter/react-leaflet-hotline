@@ -1,3 +1,6 @@
-import dynamicExport from "./export";
 
-export default dynamicExport("../MultiPolyline")
+import dynamic from 'next/dynamic';
+
+export default dynamic(() => import('../MultiPolyline'), {
+    ssr: false
+});

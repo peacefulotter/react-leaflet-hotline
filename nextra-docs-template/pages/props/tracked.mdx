@@ -1,0 +1,25 @@
+<div className='text-lg my-4'>
+The demo below presents the hotline with the `max` option changing dynamically based on the range input value.
+</div>
+
+import Tracker from '../../components/dynamics/Tracker'
+
+<Tracker />
+
+```tsx filename="tracker-max.js" {2,7-12} copy
+import MapWrapper from "./map/MapWrapper";
+import { Hotline } from 'react-leaflet-hotline';
+
+export default function Demo( { max }: { max: number } ) {
+	return (
+		<MapWrapper>
+			<Hotline
+				data={data} 
+				getLat={t => t.lat} 
+				getLng={t => t.lng} 
+				getVal={t => t.value}
+				options={{max}} />
+		</MapWrapper>
+	)
+}
+```

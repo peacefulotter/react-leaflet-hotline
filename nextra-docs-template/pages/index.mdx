@@ -1,10 +1,22 @@
 
 
+## Introduction
+
+<div className='text-lg my-4'>
+The demo below presents the hotline out of the box, with only the coordinates to draw the line. [Props](/props) can be passed
+to the component / hook to customize the hotline.
+</div>
+
 import Demo from '../components/dynamics/Demo'
 
 <Demo />
 
-```tsx filename="demo.js" {2,7-12} copy
+<details>
+<summary className='flex items-center text-xl text-sky-400 gap-5 cursor-pointer py-2'>
+	<span className="animate-bounce ml-4 h-3 w-3 rounded-full bg-sky-400 opacity-75 ring-4 ring-sky-400 ring-opacity-50"></span>
+	<span>See code</span>
+</summary>
+```tsx filename="demo.js" {2,7-11} copy
 import MapWrapper from "./map/MapWrapper";
 import { Hotline } from 'react-leaflet-hotline';
 
@@ -15,9 +27,28 @@ export default function Demo() {
 				data={data} 
 				getLat={t => t.lat} 
 				getLng={t => t.lng} 
-				getVal={t => t.value}
-				options={{...options, tolerance: 10}} />
+				getVal={t => t.value} />
 		</MapWrapper>
 	)
 }
 ```
+</details>
+
+### Options
+[Options](/options) can be passed to the `Hotline` component and the `useHotline` hook. Some options are 'tracked', 
+i.e. they can be defined as a react state and changes will be reflected automatically on the hotline.
+[See more](/options#tracked)
+
+### Event handlers
+[Events](/events) can be handled by the `eventHandlers` prop. Since the package is based on react-leaflet, all events supported by react-leaflet
+are also supported by the hotline.  
+
+### MultiPolyline
+[MultiPolyline](/multipolyline) consists of multiple polylines grouped into one layer. They thus share the same `options` and `eventHandlers`, 
+and are useful when working with multiple distinct lines that should behave similarly.
+
+### Hook
+The Hotline component is based on the [`useHotline`](/hook) hook, which is also exported and can be used in the same way as the component. 
+
+
+

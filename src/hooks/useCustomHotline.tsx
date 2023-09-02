@@ -26,7 +26,8 @@ function useCustomHotline<T, U>(
     const [hotline,   setHotline]   = useState<HotPolyline<T, U>>(undefined)
 
     // transparent polyline on top of the hotline that handles the events
-    useEventPolylines( map, hotline, data, getLat, getLng, options, eventHandlers )
+    if (eventHandlers)
+        useEventPolylines( map, hotline, data, getLat, getLng, options, eventHandlers )
 
     // separate useEffect to avoid recreating a new hotline when some options change
     useEffect( () => {

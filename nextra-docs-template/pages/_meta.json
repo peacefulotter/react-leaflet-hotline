@@ -1,4 +1,7 @@
 {
   "index": "Demo",
-  "multipolyline": "MultiPolyline"
+  "props": "Props",
+  "events": "Events",
+  "multipolyline": "MultiPolyline",
+  "hook": "Hook"
 }

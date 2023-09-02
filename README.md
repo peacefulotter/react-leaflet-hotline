@@ -11,22 +11,23 @@
     <p align="center">
         <img style='border-radius: 8px' src="./overview.png" alt="" width="850px" />
     </p>
+    <h5>This is not just a port from L.hotline, but mostly a rewrite to make gradient colors accurate. L.Hotline suffers from colors changing when moving around and zooming in and out - this package aims to fix it as well.</h5>
 </div>
 <br />
 <div>
   <ul style='margin-top: 10px'>
     <li><b>Typescript</b> support</li>
-    <li>Both <b>Hook</b> and standalone <b>Component</b> available</li>
+    <li>Both standalone <b>Component</b> and <b>Hook</b> available</li>
     <li>Highly customizable</li>
-    <li>Support all leaflet events (click, mouseover, mouseout, ...)</li>
-    <li>Lightweight: <b> <100 kB </b> </li>
+    <li>Supports all leaflet events (click, mouseover, mouseout, ...)</li>
+    <li>Lightweight: <b> ~100 kB </b> </li>
   </ul>
 </div>
 
 <div>
   <p align="center">
     <a href="https://react-leaflet-hotline.netlify.app" target="_blank">
-    Live playground with examples here 🎨
+    Documentation and Live playground with examples here 🎨
     </a>
   </p>
 </div>

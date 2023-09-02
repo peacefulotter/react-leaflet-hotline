@@ -1,0 +1,31 @@
+
+<span className='text-lg text-sky-400'>Note:</span><br />
+`T` represents a generic type. In fact, `react-leaflet-hotline` is build with the idea that coordinates can be represented in many ways, with many 
+different terminologies. Therefore, the package allows developers to directly plug-in their data and use the `getLat`, `getLng` and `getValue` props 
+to fit their data type to the Hotline package. 
+
+| Name   | Type | Default Value | Required? | Description
+| :----- | :----: | ----: | ----: | ----: |
+| data    |  `T[] \| T[][]`   |   - | <span className='text-2xl text-green-500'>✔</span> | Array containing the line(s) coordinates |
+| getLat | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get latitude from a point of type `T` |
+| getLng | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get longitude from a point of type `T` |
+| getValue | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get value from a point of type `T` |
+| [options](#options) | `HotlineOptions{:ts}` | [`object`](#options)  | <span className='text-2xl text-red-500'>✘</span> | Hotline options to modify lines appearance |
+| [eventHandlers](#eventHandlers) | `HotlineEventHandlers{:ts}` | - | <span className='text-2xl text-red-500'>✘</span> | Hotline event handlers |
+
+
+## options
+
+| Name   | Type | Default Value | Required? | Description
+| :----- | :----: | ----: | ----: | ----: |
+| min    |  number   |   0 | <span className='text-2xl font-bold text-orange-500'>~</span> (Recommended) | Minimum value of your data, `min` will correspond to the color at 0 on the palette  |
+| max    |  number   |   0 | <span className='text-2xl font-bold text-orange-500'>~</span> (Recommended) | Maximum value of your data, `max` will correspond to the color at 1 on the palette  |
+| weight    |  number   |   7 | <span className='text-2xl text-red-500'>✘</span> | Hotline thickness  |
+| outlineWidth    |  number   |   0 | <span className='text-2xl text-red-500'>✘</span> | Hotlines can be displayed with an outline, this controls its thickness  |
+| outlineColor    |  string   |   `'black'{:ts}` | <span className='text-2xl text-red-500'>✘</span> | Outline color if outlineWidth is set to a number > 0  |
+| [palette](#palette)    | Palette | [`defaultPalette`](#palette) | <span className='text-2xl text-red-500'>✘</span> | Colors used for calculating the gradients on the hotline |
+| tolerance    |  number   |   3 | <span className='text-2xl text-red-500'>✘</span> | thickness of the hotline for the events to trigger, you might want to change this if you changed the `weight` |
+
+### Palette
+
+## eventHandlers
