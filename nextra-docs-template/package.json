@@ -29,6 +29,9 @@
     "react-leaflet-hotline": "^1.4.10"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.7.11",
+    "@types/react": "^18.0.14",
+    "@types/react-leaflet": "^2.8.2",
     "@types/node": "18.11.10",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
