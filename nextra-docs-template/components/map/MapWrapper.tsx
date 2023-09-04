@@ -4,12 +4,12 @@ import 'leaflet/dist/leaflet.css';
 
 export default function MapWrapper( { ...props } ) { 
 
-	const { children } = props;
+	const { center, children } = props;
 
 	return (
         <div className='relative h-[500px] mt-5 z-0'> 
             <MapContainer 
-                center={[55.7605, 12.518]} 
+                center={center ?? [55.7605, 12.518]} 
                 zoom={16}
                 style={{width: '100%', height: '100%'}}
                 preferCanvas={true} 

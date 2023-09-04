@@ -1,4 +1,4 @@
-import { HotlineOptions } from "react-leaflet-hotline"
+import { HotlineOptions, Palette } from "react-leaflet-hotline"
 
 export const data = [
     { lat: 55.7620299, lng: 12.5197298, value: 1 },
@@ -13,25 +13,11 @@ export const data = [
 
 export const datas: {lat: number, lng: number, value: number}[][] = [ 
     [ 
-        { lat:  55.7620299 , lng:  12.5197298, value: 0 } , 
-        { lat:  55.7615605 , lng:  12.5194112, value: 1 } , 
-        { lat:  55.7612883 , lng:  12.5192078, value: 2 } , 
-        { lat:  55.7604757 , lng:  12.5184575, value: 3 } , 
+        { lat:  55.7612883 , lng:  12.5192078, value: 0 } , 
         { lat:  55.7598755 , lng:  12.5177353, value: 4 } , 
-        { lat:  55.7593927 , lng:  12.5170125, value: 4 } , 
-        { lat:  55.759348 ,  lng:  12.516951,  value: 3 } , 
+        { lat:  55.7593927 , lng:  12.5170125, value: 5 } , 
         { lat:  55.7587234 , lng:  12.5158659, value: 2 } , 
-        { lat:  55.7584996 , lng:  12.5153929, value: 1 } , 
         { lat:  55.758321 ,  lng:  12.5149273, value: 0 } , 
-    ],
-    [ 
-        { lat:  55.758321 ,  lng:  12.5149273, value: 0 } , 
-        { lat:  55.7581976 , lng:  12.5146287, value: 1 } , 
-        { lat:  55.7580203 , lng:  12.5141716, value: 2 } , 
-        { lat:  55.7578186 , lng:  12.5135902, value: 3 } , 
-        { lat:  55.7576422 , lng:  12.512996,  value: 2 } , 
-        { lat:  55.7575094 , lng:  12.5124947, value: 1 } , 
-        { lat:  55.7573451 , lng:  12.5117588, value: 0 } , 
     ],
     [ 
         { lat:  55.7573451 , lng:  12.5117588, value: 0 } , 
@@ -39,15 +25,33 @@ export const datas: {lat: number, lng: number, value: number}[][] = [
         { lat:  55.7570511 , lng:  12.5099903, value: 2 } , 
         { lat:  55.7569649 , lng:  12.5092035, value: 3 } , 
         { lat:  55.7569006 , lng:  12.5084274, value: 4 } , 
-        { lat:  55.7568135 , lng:  12.5072102, value: 5 } , 
-        { lat:  55.7564468 , lng:  12.5017979, value: 5 } , 
-        { lat:  55.7562551 , lng:  12.5000782, value: 4 } , 
-        { lat:  55.7560973 , lng:  12.4989658, value: 3 } , 
-        { lat:  55.7558649 , lng:  12.4975944, value: 2 } , 
-        { lat:  55.7555562 , lng:  12.4961369, value: 1 } , 
-        { lat:  55.7527315 , lng:  12.4874263, value: 0 } , 
     ]
 ]
+
+export const palette_0: Palette = [
+    { r: 0,   g: 160, b: 0,  t: 0    },
+    { r: 255, g: 255, b: 0,  t: 0.5  },
+    { r: 255, g: 0,   b: 0,  t: 1    }
+]
+
+export const palette_1: Palette = [
+    { r: 50,  g: 50,  b: 200, t: 0   },
+    { r: 50,  g: 200, b: 50,  t: 0.5 },
+    { r: 200, g: 50,  b: 50,  t: 1   }
+]
+
+export const palette_2: Palette = [
+    { r: 0,   g: 0,    b: 0,    t: 0   },
+    { r: 6,   g: 81,   b: 98,   t: 0.5 },
+    { r: 107, g: 255,  b: 107,  t: 1   },
+]
+
+export const palette_3: Palette = [
+    { r: 34, g: 211, b: 238,  t: 0   },
+    { r: 14, g: 165, b: 233,  t: 0.5 },
+    { r: 30, g: 58,  b: 138,  t: 1   },
+]
+
 
 export const options: HotlineOptions = {
     min: 1,
@@ -55,28 +59,7 @@ export const options: HotlineOptions = {
     outlineWidth: 0,
     outlineColor: 'black',
     weight: 7,
-    palette: [
-        { r: 0,   g: 160, b: 0,  t: 0    },
-        { r: 255, g: 255, b: 0,  t: 0.5  },
-        { r: 255, g: 0,   b: 0,  t: 1    },
-    ],
+    palette: palette_0,
     tolerance: 3
 }
 
-export const palette_1 = [
-    { r: 50,  g: 50,  b: 200, t: 0   },
-    { r: 50,  g: 200, b: 50,  t: 0.5 },
-    { r: 200, g: 50,  b: 50,  t: 1   }
-]
-
-export const palette_2 = [
-    { r: 200, g: 50,  b: 50,  t: 0   },
-    { r: 50,  g: 200, b: 50,  t: 0.5 },
-    { r: 50,  g: 50,  b: 200, t: 1   }
-]
-
-export const palette_3 = [
-    { r: 0,   g: 0,    b: 0,    t: 0   },
-    { r: 6,   g: 81,   b: 98,   t: 0.5 },
-    { r: 107, g: 255,  b: 107,  t: 1   },
-]

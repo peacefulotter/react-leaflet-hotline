@@ -10,7 +10,7 @@ to fit their data type to the Hotline package.
 | getLat | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get latitude from a point of type `T` |
 | getLng | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get longitude from a point of type `T` |
 | getValue | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get value from a point of type `T` |
-| options | [`HotlineOptions{:ts}`](#HotlineOptions) | object (see default values of HotlineOptions)  | <span className='text-2xl text-red-500'>✘</span> | Hotline options to modify lines appearance |
+| options | [`HotlineOptions{:ts}`](#HotlineOptions) | `object` (see default values of HotlineOptions)  | <span className='text-2xl text-red-500'>✘</span> | Hotline options to modify lines appearance |
 | eventHandlers | [`HotlineEventHandlers{:ts}`](#HotlineEventHandlers) | - | <span className='text-2xl text-red-500'>✘</span> | Hotline event handlers |
 
 
@@ -18,8 +18,8 @@ to fit their data type to the Hotline package.
 
 | Name   | Type | Default Value | Required? | Tracked? | Description
 | :----- | :----: | ----: | ----: | ----: | ----: |
-| min    |  number   |   0 | <span className='text-2xl font-bold text-orange-500'>&#126;</span> (Recommended) | <span className='text-2xl text-green-500'>✔</span> | Minimum value of your data, `min` will correspond to the color at 0 on the palette  |
-| max    |  number   |   1 | <span className='text-2xl font-bold text-orange-500'>&#126;</span> (Recommended) | <span className='text-2xl text-green-500'>✔</span> | Maximum value of your data, `max` will correspond to the color at 1 on the palette  |
+| min    |  number   |   0 | <span className='text-2xl font-bold text-orange-500'>&#126;</span> (Recommended) | <span className='text-2xl text-green-500'>✔</span> | Minimum value of your data, `min` will correspond to the color at t=0 on the palette  |
+| max    |  number   |   1 | <span className='text-2xl font-bold text-orange-500'>&#126;</span> (Recommended) | <span className='text-2xl text-green-500'>✔</span> | Maximum value of your data, `max` will correspond to the color at t=1 on the palette  |
 | weight    |  number   |   7 | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Hotline thickness |
 | outlineWidth    |  number   |   0 | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Hotlines can be displayed with an outline, this parameter controls its thickness  |
 | outlineColor    |  string `('red', '#ff0'){:ts}`   |   `'black'{:ts}` | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Outline color if outlineWidth is set to a number > 0  |
