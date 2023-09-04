@@ -1,22 +1,15 @@
 
-
-import Events from '../components/dynamics/Events'
-
-Click on the Hotline and check the console or move your mose over and out!
-
-<Events />
-
-```tsx filename="demo.js" {3, 7-11, 15-21} copy
 import { useMemo } from 'react';
+import { data, options } from '../assets/constants';
 import MapWrapper from "./map/MapWrapper";
 import { Hotline } from 'react-leaflet-hotline';
+import { HotlineEventHandlers } from 'react-leaflet-hotline/dist/types/types';
 
 export default function Events() {
 
-	// Attach 3 events to the Hotline: click + mouseover + mouseout events 
 	const eventHandlers: HotlineEventHandlers = useMemo( () => ({
         click: (e, i, p) => console.log('clicked on line: ' + i),
-        mouseover: (e, i, p) => p.setStyle({opacity: 0.5}),
+		mouseover: (e, i, p) => p.setStyle({opacity: 0.5}),
         mouseout: (e, i, p) => p.setStyle({opacity: 0})
     }), [])
 
@@ -27,9 +20,8 @@ export default function Events() {
 				getLat={t => t.lat} 
 				getLng={t => t.lng} 
 				getVal={t => t.value}
-				options={{tolerance: 10}} // thickness of the "event polyline" over the original hotline
+				options={{...options, tolerance: 10}}
 				eventHandlers={eventHandlers} />
 		</MapWrapper>
 	)
 }
-```

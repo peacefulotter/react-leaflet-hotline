@@ -1,0 +1,59 @@
+
+<span className='text-lg text-sky-400'>Note:</span><br />
+`T` represents a generic type. In fact, `react-leaflet-hotline` is build with the idea that coordinates can be represented in many ways, with many 
+different terminologies. Therefore, the package allows developers to directly plug-in their data and use the `getLat`, `getLng` and `getValue` props 
+to fit their data type to the Hotline package. 
+
+| Name   | Type | Default Value | Required? | Description
+| :----- | :----: | ----: | ----: | ----: |
+| data    |  `T[] \| T[][]`   |   - | <span className='text-2xl text-green-500'>✔</span> | Array containing the line(s) coordinates |
+| getLat | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get latitude from a point of type `T` |
+| getLng | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get longitude from a point of type `T` |
+| getValue | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get value from a point of type `T` |
+| options | [`HotlineOptions{:ts}`](#HotlineOptions) | object (see default values of HotlineOptions)  | <span className='text-2xl text-red-500'>✘</span> | Hotline options to modify lines appearance |
+| eventHandlers | [`HotlineEventHandlers{:ts}`](#HotlineEventHandlers) | - | <span className='text-2xl text-red-500'>✘</span> | Hotline event handlers |
+
+
+## HotlineOptions
+
+| Name   | Type | Default Value | Required? | Tracked? | Description
+| :----- | :----: | ----: | ----: | ----: | ----: |
+| min    |  number   |   0 | <span className='text-2xl font-bold text-orange-500'>&#126;</span> (Recommended) | <span className='text-2xl text-green-500'>✔</span> | Minimum value of your data, `min` will correspond to the color at 0 on the palette  |
+| max    |  number   |   1 | <span className='text-2xl font-bold text-orange-500'>&#126;</span> (Recommended) | <span className='text-2xl text-green-500'>✔</span> | Maximum value of your data, `max` will correspond to the color at 1 on the palette  |
+| weight    |  number   |   7 | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Hotline thickness |
+| outlineWidth    |  number   |   0 | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Hotlines can be displayed with an outline, this parameter controls its thickness  |
+| outlineColor    |  string `('red', '#ff0'){:ts}`   |   `'black'{:ts}` | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Outline color if outlineWidth is set to a number > 0  |
+| palette    | [Palette](#palette)  | [`defaultPalette`](#defaultpalette) | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Colors used for calculating the gradients on the hotline |
+| tolerance    |  number   |   3 | <span className='text-2xl text-red-500'>✘</span> | <span className='text-2xl text-green-500'>✔</span> | Thickness of the hotline for the events to trigger, you might want to change this if you changed the `weight` |
+
+### Palette
+`Palette{:ts}` is a typescript type representing an array of colors `Color[]{:ts}`. 
+```ts
+interface Color {
+    r: number; // Red channel
+    g: number; // Green channel
+    b: number; // Blue channel
+    t: number; // Offset at which the value of a data point becomes this exact color
+}
+```
+
+Suppose your palette is the following array:
+```ts
+const palette: Palette = [
+    {r: 1, g: 0, b: 0, t: 0},
+    {r: 0, g: 0, b: 1, t: 1}
+]
+``` 
+Then, any data points with values less or equal to 0 will appear red, any data points with values superior or equal to 1 will appear blue 
+and any data points with values between 0 and 1 will appear as a linear interpolation between the two colors. 
+
+##### defaultPalette
+The default palette called `defaultPalette{:ts}` is an array of length 3 containing the red, yellow and green colors with offsets of 0, 0.5 and 1 respectively.
+See the effect of changing the palette colors in the [playground](/playground)!
+
+
+
+## HotlineEventHandlers
+Hotlines support all leaflet events thanks to the `eventHandlers` prop.<br/>
+The eventHandlers prop can be tracked by wrapping your handler object with a `useMemo` hook. <br />
+See [/events](/events) for an example on how to use eventHandlers or take a look at the [playground](/playground).

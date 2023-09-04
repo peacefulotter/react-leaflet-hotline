@@ -3,8 +3,9 @@
 ## Introduction
 
 <div className='text-lg my-4'>
-The demo below presents the hotline out of the box, with only the coordinates to draw the line. [Props](/props) can be passed
-to the component / hook to customize the hotline.
+The demo below presents the hotline out of the box, with only the coordinates to draw the line. <br />
+[Props](/props) can be passed to the component (and [hook](/hook)) to customize the hotline. <br />
+Please see the [playground](/playground) to see the effects of changing the various props.
 </div>
 
 import Demo from '../components/dynamics/Demo'
@@ -16,9 +17,15 @@ import Demo from '../components/dynamics/Demo'
 	<span className="animate-bounce ml-4 h-3 w-3 rounded-full bg-sky-400 opacity-75 ring-4 ring-sky-400 ring-opacity-50"></span>
 	<span>See code</span>
 </summary>
-```tsx filename="demo.js" {2,7-11} copy
+```tsx filename="demo.js" {2,13-17} copy
 import MapWrapper from "./map/MapWrapper";
 import { Hotline } from 'react-leaflet-hotline';
+
+const data = [
+    { lat: 55.7620299, lng: 12.5197298, value: 1 },
+    { lat: 55.7598755, lng: 12.5177353, value: 8 },
+    { lat: 55.7587234, lng: 12.5158659, value: 4 },
+]
 
 export default function Demo() {
 	return (

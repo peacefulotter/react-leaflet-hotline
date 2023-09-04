@@ -74,3 +74,9 @@ export const palette_2 = [
     { r: 50,  g: 200, b: 50,  t: 0.5 },
     { r: 50,  g: 50,  b: 200, t: 1   }
 ]
+
+export const palette_3 = [
+    { r: 0,   g: 0,    b: 0,    t: 0   },
+    { r: 6,   g: 81,   b: 98,   t: 0.5 },
+    { r: 107, g: 255,  b: 107,  t: 1   },
+]
