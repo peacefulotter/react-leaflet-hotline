@@ -3,10 +3,20 @@
 <div align="center">
     <h1>react-leaflet-hotline</h2>
     <div>
-        [![License:MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-        ![npm](https://img.shields.io/npm/v/react-leaflet-hotline?style=for-the-badge)
-        ![GitHub last commit](https://img.shields.io/github/last-commit/peacefulotter/react-leaflet-hotline?style=for-the-badge)
-        ![npm bundle size](https://img.shields.io/bundlephobia/min/react-leaflet-hotline@latest?style=for-the-badge)
+        <p align="center">
+          <a aria-label="MIT License" href="https://opensource.org/licenses/MIT">
+            <img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge">
+          </a>
+          <a aria-label="NPM" href="https://www.npmjs.com/package/react-leaflet-hotline">
+            <img src="https://img.shields.io/npm/v/react-leaflet-hotline?style=for-the-badge">
+          </a>
+          <a aria-label="GitHub last commit" href="https://www.npmjs.com/package/react-leaflet-hotline">
+            <img src="https://img.shields.io/github/last-commit/peacefulotter/react-leaflet-hotline?style=for-the-badge">
+          </a>
+            <a aria-label="npm bundle size" href="https://www.npmjs.com/package/react-leaflet-hotline">
+            <img src="https://img.shields.io/bundlephobia/min/react-leaflet-hotline@latest?style=for-the-badge">
+          </a>
+        </p>
     </div>
     <h3>Create colored gradient Polylines in react-leaflet</h3>
     <a href="https://react-leaflet-hotline.netlify.app" target="_blank">
