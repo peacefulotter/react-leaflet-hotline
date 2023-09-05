@@ -2,7 +2,6 @@
 ![npm](https://img.shields.io/npm/v/react-leaflet-hotline?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/peacefulotter/react-leaflet-hotline?style=for-the-badge)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/react-leaflet-hotline@latest?style=for-the-badge)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/48c9fde3-3471-4408-9f78-0528bc484cc1/deploy-status?style=for-the-badge)](https://app.netlify.com/sites/react-leaflet-hotline/deploys?style=for-the-badge)
 
 <div align="center">
     <h1>react-leaflet-hotline</h2>
