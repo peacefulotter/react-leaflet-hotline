@@ -19,7 +19,7 @@
         </p>
     </div>
     <h3>Create colored gradient Polylines in react-leaflet</h3>
-    <a href="https://react-leaflet-hotline.netlify.app" target="_blank">
+    <a href="https://react-leaflet-hotline.netlify.app" syle='margin-bottom: 10px' target="_blank">
       📝 <b>Documentation</b>, <b>Examples</b> and <b>Live playground</b> here 🎨
     </a>
     <br />
