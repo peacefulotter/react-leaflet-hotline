@@ -7,3 +7,8 @@
     outline: none !important;
     border-radius: 0.75rem;
 }
+
+.leaflet-tile-container {
+    filter: grayscale(50%) brightness(50%);
+
+}

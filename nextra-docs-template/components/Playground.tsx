@@ -50,7 +50,7 @@ const ColorPicker = ( { name, color, children }: { name: string, color: string, 
 	return (
 		<div className="relative flex items-center w-full justify-between gap-5">
 			<span className='whitespace-nowrap'>{name}</span>
-			<div className='cursor-pointer rounded w-16 h-6' style={{background: color}} onClick={() => setIsVisible(p => !p)}></div>
+			<div className='cursor-pointer rounded w-16 h-7' style={{background: color}} onClick={() => setIsVisible(p => !p)}></div>
 			{ isVisible && 
 				<div className='absolute top-0 left-full z-50 ml-5 mt-[-50%]' ref={ref}>
 					{ children }
@@ -101,7 +101,7 @@ export default function Playground() {
 				options={_options} />
 		</MapWrapper>
 		<div className='flex flex-col bg-neutral-800 mt-5 rounded-xl px-10'>
-			<div className='flex justify-between py-7 border-neutral-600 border-b-2'>
+			<div className='flex justify-between py-7 border-dashed border-neutral-700 border-b-2'>
 				<div className='flex flex-col gap-3 w-min'>
 					<div className="flex items-center justify-end gap-5">
 						<span className="whitespace-nowrap">Min:</span> 
@@ -119,7 +119,7 @@ export default function Playground() {
 						{_options.weight}
 					</div>
 				</div>
-				<div className='border-r-2 border-neutral-600'></div>
+				<div className='border-r-2 border-dashed border-neutral-700'></div>
 				<div className='flex flex-col gap-3 w-min'>
 					<div className="flex items-center justify-end gap-5">
 						<span className="whitespace-nowrap">Outline width:</span> 
@@ -131,7 +131,7 @@ export default function Playground() {
 					</ColorPicker>
 				</div>
 			</div>
-			<div className='flex gap-5 py-7 border-b-2 border-neutral-600'>
+			<div className='flex gap-5 py-7 border-b-2 border-dashed border-neutral-700'>
 				<div className='flex flex-col gap-3'>
 					<ColorPicker name='Palette 0' color={rgbToString(_options.palette[0])}>
 						<PalettePicker i={0} options={_options} setOptions={setOptions} />
@@ -143,7 +143,7 @@ export default function Playground() {
 						<PalettePicker i={2} options={_options} setOptions={setOptions} />
 					</ColorPicker>
 				</div>
-				<div className='flex gap-3'>
+				<div className='flex gap-3 ml-7'>
 					<PrefabricatedPalettePicker 
 						className='from-[rgb(0,160,0)] via-[rgb(255,255,0)] to-[rgb(255,0,0)]' 
 						palette={palette_0}
