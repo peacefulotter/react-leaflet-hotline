@@ -1,17 +1,17 @@
-import { HotlineOptions, Palette } from "./types";
+import { HotlineOptions, Palette } from './types'
 
 export const defaultPalette: Palette = [
-    { r: 0,   g: 160, b: 0,  t: 0    },
-    { r: 255, g: 255, b: 0,  t: 0.5  },
-    { r: 255, g: 0,   b: 0,  t: 1    },
+  { r: 0, g: 160, b: 0, t: 0 },
+  { r: 255, g: 255, b: 0, t: 0.5 },
+  { r: 255, g: 0, b: 0, t: 1 },
 ]
 
 export const defaultOptions: Required<HotlineOptions> = {
-    min: 0,
-    max: 1,
-    outlineWidth: 0,
-    outlineColor: 'black',
-    weight: 7,
-    palette: defaultPalette,
-    tolerance: 3
+  min: 0,
+  max: 1,
+  outlineWidth: 0,
+  outlineColor: 'black',
+  weight: 7,
+  palette: defaultPalette,
+  tolerance: 3,
 }
