@@ -26,7 +26,7 @@ export type ProjectionFn<T> = (
   latlngs: LatLng[],
   result: T[][],
   projectedBounds: any,
-  p: number
+  p: number,
 ) => void
 
 export type NewableRenderer<T> = new (options?: HotlineOptions, ...params: any[]) => Renderer<T>
@@ -35,7 +35,7 @@ export type NewableHotPolyline<T, U> = new (
   data: T[] | T[][],
   getLat: HotlineGetter<T>,
   getLng: HotlineGetter<T>,
-  getVal: HotlineGetter<T>
+  getVal: HotlineGetter<T>,
 ) => HotPolyline<T, U>
 
 /**
@@ -52,10 +52,21 @@ export interface HotPoint {
   i: number
 }
 
-export type HotlineEventFn = (e: LeafletEvent, i: number, polyline: L.Polyline<any, any>) => void
+export type HotlineEventParams = {
+  event: LeafletEvent
+  line: number
+  polyline: L.Polyline<any, any>
+}
+export type HotlineEventFn = (params: HotlineEventParams) => void
 export type HotlineEventHandlers = { [key in keyof LeafletEventHandlerFnMap]: HotlineEventFn }
 
-export type HotlineGetter<T> = (t: T, i: number) => number
+export type DataPoint<T> = T extends (infer U)[][] ? U : T extends (infer V)[] ? V : T
+export type HotlineGetterParams<T> = {
+  point: DataPoint<T>
+  segment: number
+  line: number
+}
+export type HotlineGetter<T> = (params: HotlineGetterParams<T>) => number
 
 export interface HotlineProps<T> {
   data: T[] | T[][]

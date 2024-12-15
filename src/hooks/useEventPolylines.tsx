@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { defaultOptions } from '../constants'
 import HotPolyline from '../core/HotPolyline'
 import { HotlineEventHandlers, HotlineGetter, HotlineOptions } from '../types'
+import Converter from '../converter'
+import { LatLng } from 'leaflet'
 
 const getWeight = (options?: HotlineOptions) =>
   (options && options.weight ? options.weight : defaultOptions.weight) +
@@ -16,7 +18,7 @@ function useEventPolylines<T, U>(
   getLat: HotlineGetter<T>,
   getLng: HotlineGetter<T>,
   options?: HotlineOptions,
-  eventHandlers?: HotlineEventHandlers
+  eventHandlers?: HotlineEventHandlers,
 ): null {
   const [polylines, setPolylines] = useState<L.Polyline[]>([])
 
@@ -26,29 +28,24 @@ function useEventPolylines<T, U>(
     opacity: 0,
   }
 
-  const createPolyline = (_data: T[], i: number) => {
-    const latlngs = _data.map((d: T) => ({
-      lat: getLat(d, i),
-      lng: getLng(d, i),
-    }))
+  const createPolyline = (latlngs: LatLng[], segment: number) => {
     const polyline = L.polyline(latlngs, poylineOptions)
-    attachEventHandlers(polyline, i)
+    attachEventHandlers(polyline, segment)
     return polyline.addTo(map)
   }
 
-  const attachEventHandlers = (polyline: L.Polyline, i: number) => {
+  const attachEventHandlers = (polyline: L.Polyline, line: number) => {
     if (eventHandlers === undefined) return
     Object.entries(eventHandlers).forEach(([k, v]) => {
-      polyline.on(k, (e) => v(e, i, polyline))
+      polyline.on(k, (e) => v({ event: e, line, polyline }))
     })
   }
 
   useEffect(() => {
     if (eventHandlers === undefined || hotline === undefined) return
 
-    const _polylines = Array.isArray(data[0])
-      ? (data as T[][]).map((d: T[], i: number) => createPolyline(d, i))
-      : [createPolyline(data as T[], 0)]
+    const coords = Converter.toLatLngs(data, getLat, getLng, () => 0)
+    const _polylines = coords.map((c, i) => createPolyline(c, i))
 
     setPolylines(_polylines)
 

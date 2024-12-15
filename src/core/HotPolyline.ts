@@ -1,4 +1,4 @@
-import L, { LatLng, Map } from 'leaflet'
+import L, { LatLng, LatLngExpression } from 'leaflet'
 
 import { HotlineCanvas } from '../canvas/HotlineCanvas'
 import Converter from '../converter'
@@ -15,7 +15,7 @@ export default class HotPolyline<T, U> extends L.Polyline {
     coords: T[] | T[][],
     getLat: HotlineGetter<T>,
     getLng: HotlineGetter<T>,
-    getVal: HotlineGetter<T>
+    getVal: HotlineGetter<T>,
   ) {
     const canvas = new HotlineCanvas<U>(renderer)
     const latlngs = Converter.toLatLngs(coords, getLat, getLng, getVal)
@@ -32,6 +32,12 @@ export default class HotPolyline<T, U> extends L.Polyline {
     return this
   }
 
+  setLatLngs(latlngs: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][]) {
+    super.setLatLngs(latlngs)
+    this._canvas._update()
+    return this
+  }
+
   setOptions(options?: HotlineOptions) {
     this._canvas._renderer.setOptions(options)
     this._canvas._update()
@@ -41,7 +47,7 @@ export default class HotPolyline<T, U> extends L.Polyline {
   _projectLatlngs(latlngs: LatLng[] | LatLng[][], result: any, projectedBounds: any) {
     if (Array.isArray(latlngs[0]))
       (latlngs as LatLng[][]).forEach((_latlngs: LatLng[], p: number) =>
-        this.projectMap(this._map, _latlngs, result, projectedBounds, p)
+        this.projectMap(this._map, _latlngs, result, projectedBounds, p),
       )
     else this.projectMap(this._map, latlngs as LatLng[], result, projectedBounds, 0)
 
@@ -76,7 +82,7 @@ export default class HotPolyline<T, U> extends L.Polyline {
           points[j + 1],
           bounds,
           j,
-          true
+          true,
         )
 
         if (segment === undefined) {
