@@ -4,15 +4,23 @@
 different terminologies. Therefore, the package allows developers to directly plug-in their data and use the `getLat`, `getLng` and `getValue` props 
 to fit their data type to the Hotline package. 
 
+# Hotline props
+
 | Name   | Type | Default Value | Required? | Description
 | :----- | :----: | ----: | ----: | ----: |
 | data    |  `T[] \| T[][]`   |   - | <span className='text-2xl text-green-500'>✔</span> | Array containing the line(s) coordinates |
-| getLat | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get latitude from a point of type `T` |
-| getLng | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get longitude from a point of type `T` |
-| getValue | `(t: T) => number{:ts}` | - | <span className='text-2xl text-green-500'>✔</span> | Get value from a point of type `T` |
-| options | [`HotlineOptions{:ts}`](#HotlineOptions) | `object` (see default values of HotlineOptions)  | <span className='text-2xl text-red-500'>✘</span> | Hotline options to modify lines appearance |
-| eventHandlers | [`HotlineEventHandlers{:ts}`](#HotlineEventHandlers) | - | <span className='text-2xl text-red-500'>✘</span> | Hotline event handlers |
+| getLat | [`HotlineGetter<T>{:ts}`](#hotlinegetter) | - | <span className='text-2xl text-green-500'>✔</span> | Get latitude from a point of type `T` |
+| getLng | [`HotlineGetter<T>{:ts}`](#hotlinegetter) | - | <span className='text-2xl text-green-500'>✔</span> | Get longitude from a point of type `T` |
+| getValue | [`HotlineGetter<T>{:ts}`](#hotlinegetter) | - | <span className='text-2xl text-green-500'>✔</span> | Get value from a point of type `T` |
+| options | [`HotlineOptions{:ts}`](#hotlineoptions) | `object` (see default values of HotlineOptions)  | <span className='text-2xl text-red-500'>✘</span> | Hotline options to modify lines appearance |
+| eventHandlers | [`HotlineEventHandlers{:ts}`](#hotlineeventhandlers) | - | <span className='text-2xl text-red-500'>✘</span> | Hotline event handlers |
 
+## HotlineGetter 
+
+Defined as:
+```ts
+type HotlineGetter<T> = ({ point: DataPoint<T>, segment: number, line: number}) => number
+```
 
 ## HotlineOptions
 

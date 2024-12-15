@@ -127,7 +127,13 @@ export default function Playground() {
           <div className="flex flex-col gap-3 w-min">
             <div className="flex items-center justify-end gap-5">
               <span className="whitespace-nowrap">Min:</span>
-              <input type="range" min="0" max="9" value={_options.min} onChange={onChange('min')} />
+              <input
+                type="range"
+                min="0"
+                max={_options.max - 1}
+                value={_options.min}
+                onChange={onChange('min')}
+              />
               {_options.min}
             </div>
             <div className="flex items-center justify-end gap-5">

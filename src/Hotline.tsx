@@ -1,5 +1,3 @@
-import { ReactNode } from 'react'
-
 import { HotlineProps } from './types'
 import useHotline from './hooks/useHotline'
 
@@ -10,7 +8,7 @@ function Hotline<T>({
   getVal,
   options,
   eventHandlers,
-}: HotlineProps<T>): ReactNode {
+}: HotlineProps<T>): JSX.Element {
   useHotline<T>({ data, getLat, getLng, getVal, options, eventHandlers })
   return null
 }

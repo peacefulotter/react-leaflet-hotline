@@ -3,4 +3,12 @@ const withNextra = require('nextra')({
   themeConfig: './theme.config.tsx',
 })
 
-module.exports = withNextra()
+const config = withNextra()
+
+module.exports = {
+  ...config,
+  // webpack(config) {
+  //   config.infrastructureLogging = { debug: /PackFileCache/ }
+  //   return config;
+  // }
+}
